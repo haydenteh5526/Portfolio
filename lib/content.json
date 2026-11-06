@@ -1,0 +1,159 @@
+{
+  "name": "Hayden Teh",
+  "role": "Software Engineering · AI & Cloud Computing",
+  "intro": "I’m a final-year Software Design with AI for Cloud Computing student at TUS. My experience spans software engineering at Ericsson and MLOps at Jabil. I enjoy connecting backend services, AI automation and clear user interfaces to solve practical problems.",
+  "github": "https://github.com/haydenteh5526",
+  "projects": [
+    {
+      "slug": "docvault",
+      "name": "DocVault",
+      "category": "Final-year project",
+      "tone": "cyan",
+      "art": "docvault.svg",
+      "artAlt": "Illustration of DocVault’s document extraction and hybrid search workflow",
+      "summary": "Digitise manuals, warranties and guides, then find the information you need with keyword and meaning-based search.",
+      "stack": [
+        "FastAPI",
+        "React",
+        "TypeScript",
+        "PostgreSQL",
+        "pgvector",
+        "Docker"
+      ],
+      "status": "Local web and backend MVP implemented",
+      "repository": "https://github.com/haydenteh5526/DocVault",
+      "evidence": "https://github.com/haydenteh5526/DocVault/blob/main/specs/IMPLEMENTATION_STATUS.md",
+      "purpose": "DocVault is my final-year project: a document management app for digitising physical manuals, warranties and guides and finding information within them. It connects document storage and text extraction with search and document-grounded Q&A.",
+      "approach": "A React and TypeScript client connects to a FastAPI backend. PostgreSQL full-text search and pgvector provide keyword and semantic retrieval in the same database. Redis and an ARQ worker handle document processing in the background, with an inline fallback when the queue is unavailable.",
+      "decision": "Combining relational data and both search methods in one database keeps the architecture simpler. Background processing lets uploads return while text extraction and indexing continue.",
+      "evidenceText": "The repository documents the local runtime, automated checks and a full-stack smoke test. The implementation-status document separates working features from evaluation and deployment work still to be completed.",
+      "limitations": "Formal evaluation, physical-device validation and evidence of a live AWS deployment remain in progress. Generated AI answers were not verified in the documented smoke run because no live answer-provider key was active."
+    },
+    {
+      "slug": "vibecam",
+      "name": "VibeCam",
+      "category": "Offline mobile experience",
+      "tone": "green",
+      "art": "vibecam.svg",
+      "artAlt": "Project illustration of VibeCam’s six camera-inspired looks and retained original",
+      "summary": "An offline pocket-camera simulator with six compact-camera-inspired looks for photos and short videos. Import, compare and restyle while keeping the original.",
+      "stack": ["React Native", "Expo", "TypeScript", "Local media processing"],
+      "status": "In development · Physical iPhone testing pending",
+      "repository": "https://github.com/haydenteh5526/VibeCam",
+      "evidence": "https://github.com/haydenteh5526/VibeCam/blob/main/docs/RELEASE_READINESS.md",
+      "purpose": "VibeCam is an iPhone camera app in development, focused on offline photo and short-video looks. Users can capture or import a photo, compare different looks and preview adjustments before applying an edit.",
+      "approach": "The Expo, React Native and TypeScript app uses local photo rendering and a custom iPhone module for short video export. Film Roll retains originals and applied edits, so users can restyle media without compounding an earlier edit. Cloud features are disabled by default for the first release.",
+      "decision": "Keeping the original separate from the edit lets people change their mind. The same committed media is used for preview, saving and sharing, helping the output stay consistent with the applied edit.",
+      "evidenceText": "The release-readiness document records development tests, rendering checks and browser walkthroughs. It also provides a physical iPhone walkthrough for capture, audio, export, storage and permissions.",
+      "limitations": "Physical iPhone validation remains before release. The six looks are camera-inspired interpretations, rather than measured matches to camera hardware. The app is not presented as an App Store release."
+    },
+    {
+      "slug": "exoplanet-ai-hunter",
+      "name": "Exoplanet AI Hunter",
+      "category": "NASA Space Apps Challenge 2025",
+      "tone": "lavender",
+      "art": "exoplanet.svg",
+      "artAlt": "Illustration of a planetary transit and observation classification",
+      "summary": "A machine-learning classification project using Kepler, K2 and TESS observations to support exoplanet follow-up prioritisation.",
+      "stack": ["Python", "Flask", "scikit-learn", "pandas"],
+      "status": "Challenge classification project",
+      "repository": "https://github.com/haydenteh5526/Exoplanet-AI-Hunter",
+      "evidence": "https://github.com/haydenteh5526/Exoplanet-AI-Hunter/blob/main/README.md",
+      "purpose": "Developed for the NASA Space Apps Challenge 2025, Exoplanet AI Hunter brings machine learning and a web interface together to classify transit observations for follow-up prioritisation.",
+      "approach": "A Random Forest model works with astronomical observation parameters. A Flask interface exposes the classification workflow, while Python, pandas and scikit-learn support data processing and modelling. The repository uses observation data from NASA’s Kepler, K2 and TESS missions.",
+      "decision": "Presenting the model through a web interface makes its observation inputs and classification output easier to explore than a standalone training script.",
+      "evidenceText": "The public repository contains the application, data-processing and model-training code, setup instructions and tests.",
+      "limitations": "This is a classification project. A model’s classification does not establish that a new planet has been discovered or independently confirmed."
+    },
+    {
+      "slug": "coursexcel",
+      "name": "CourseXcel",
+      "category": "Team Leader · September – December 2024",
+      "tone": "peach",
+      "art": "coursexcel.svg",
+      "artAlt": "Project illustration connecting subject assignments, lecturer claims and departmental reports",
+      "summary": "Subject assignment, lecturer claims and departmental reporting in one application, with distinct permissions and workflows for each role.",
+      "stack": ["Python", "Flask", "JavaScript", "MySQL"],
+      "status": "Application project · Source available",
+      "repository": "https://github.com/haydenteh5526/CourseXcel",
+      "evidence": "https://github.com/haydenteh5526/CourseXcel/blob/main/README.md",
+      "purpose": "As Team Leader, I worked on CourseXcel from September to December 2024. The application supports course administration, subject assignments, part-time lecturers and monthly claims, with different workflows for administrators, programme officers and lecturers.",
+      "approach": "The web application uses Python, Flask, JavaScript and MySQL. It automates course-structure conversion and cost calculations alongside subject assignments, lecturer claims and departmental reports. Role-based permissions keep each workflow aligned with the user’s responsibilities.",
+      "decision": "Separating the workflows by role keeps each user’s actions and information aligned with their responsibilities. The project shows my interest in practical business software alongside AI applications.",
+      "evidenceText": "The public repository describes the role-based workflows and contains the application source. My CV records my Team Leader role and the project’s work on course-structure conversion and workflow automation.",
+      "limitations": "The source documents the application’s functionality. I would use a repeatable evaluation with a defined dataset to establish comparable accuracy and time-saving results before extending the system."
+    },
+    {
+      "slug": "f1-strategy-visualisation",
+      "name": "F1 Strategy Visualisation",
+      "category": "Group data visualisation project",
+      "tone": "blue",
+      "art": "f1.svg",
+      "artAlt": "Illustration of race stints and lap-time comparison, rather than a measured race chart",
+      "summary": "Exploring race pace, tyre age and pit-stop context through an interactive story. I am Head Developer in the group project.",
+      "stack": ["Python", "Streamlit", "FastF1", "Data visualisation"],
+      "status": "Story prototype · Audience feedback in progress",
+      "repository": "https://github.com/haydenteh5526/F1-Strategy-Visualisation",
+      "evidence": "https://github.com/haydenteh5526/F1-Strategy-Visualisation/blob/main/README.md",
+      "purpose": "A group data visualisation project for F1 fans, initially studying the 2026 Austrian Grand Prix. It explores race pace, tyre age and pit-stop context. The team workflow names me as Head Developer.",
+      "approach": "The preparation pipeline retains selected source laps and marks eligibility for normal-racing pace comparisons. A Streamlit story prototype combines pace context, matched race-window comparisons, stint accounting and pit/VSC exploration.",
+      "decision": "Keeping the recorded laps and their eligibility flags helps make the basis of comparisons visible. Race-window and stint context matter when interpreting differences in lap time.",
+      "evidenceText": "The repository includes the audience brief, data audit, preparation pipeline and story prototype, together with documentation of the comparisons and their limits.",
+      "limitations": "Audience feedback and the final story remain in progress. Fuel load, traffic and conditions also affect lap times; the data cannot isolate causal tyre degradation or establish an optimal race strategy."
+    }
+  ],
+  "experience": [
+    {
+      "company": "Ericsson",
+      "role": "Software Engineering Intern",
+      "location": "Athlone, Ireland",
+      "dates": "January – July 2026",
+      "intro": "I developed a command-line AI agent to help replace legacy Java code across three departments. I built in two stages of human approval before changes could be written, keeping people in control of the process.",
+      "metrics": [
+        ["3.5 seconds", "Agent latency achieved"],
+        ["2 stages", "Human approval before writing changes"]
+      ],
+      "details": "I also helped migrate Gerrit workflows to GitLab CI using Docker, Helm and Gradle, and automated a reporting pipeline from Jira through SharePoint into Power BI.",
+      "learning": "Useful AI needs safeguards and dependable integration with the team’s existing workflow."
+    },
+    {
+      "company": "Jabil",
+      "role": "MLOps Intern",
+      "location": "Penang, Malaysia",
+      "dates": "January – June 2025",
+      "intro": "I developed an OCR sticker extraction system to automate information extraction from labels and documents.",
+      "metrics": [
+        ["35%", "Improvement in processing accuracy"],
+        ["50%", "Reduction in manual validation time"]
+      ],
+      "details": "I integrated PaddleOCR with Amazon Bedrock for document processing and used Python to automate machine-data retrieval.",
+      "learning": "Evaluate AI through measurable results and how well it fits the people using it."
+    }
+  ],
+  "education": [
+    {
+      "institution": "Technological University of the Shannon",
+      "location": "Athlone, Ireland",
+      "qualification": "BSc (Honours) in Software Design with Artificial Intelligence for Cloud Computing",
+      "dates": "Expected graduation: May 2027",
+      "result": "Level 8 · Current average: 80%",
+      "note": "DocVault is my final-year project."
+    },
+    {
+      "institution": "INTI International College Penang",
+      "location": "Penang, Malaysia",
+      "qualification": "Diploma in Computer Science",
+      "dates": "Graduated April 2025",
+      "result": "CGPA: 3.85 / 4.00 · Dean’s List",
+      "note": ""
+    }
+  ],
+  "awards": [
+    {
+      "title": "Huawei Intelligent World 2030 & IBM Bootcamp",
+      "result": "Team Champion",
+      "details": "First place at both pitching sessions, competing among more than 20 teams.",
+      "dates": "June & September 2024 · Penang, Malaysia"
+    }
+  ]
+}

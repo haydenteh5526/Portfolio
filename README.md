@@ -6,6 +6,8 @@ A personal portfolio with five project case studies, internship experience at Er
 
 Built with **Next.js 15 (App Router), TypeScript, Tailwind CSS 4 and Framer Motion**. All routes are generated at build time for GitHub Pages. The page content is present in the exported HTML, and the animations respect reduced-motion preferences.
 
+The homepage includes scroll-linked project cards, a pausable technology marquee, resume-style experience and education, a skills panel and a full-width contact footer. Project cards use a regular vertical layout on phones, short screens and when reduced motion is enabled. Keyboard focus brings covered cards back into view.
+
 ## Run locally
 
 With Node.js 22 or later:
@@ -40,4 +42,8 @@ The project path is `/Portfolio`; it is configured in `next.config.ts`, `lib/sit
 
 ## Design references
 
-[Ramzy’s portfolio](https://ramzy.framer.website/) informed the light canvas, rounded pastel project rows and two-column introduction. [Hans’s portfolio](https://iecloudbird.github.io/portfolio/) informed the framework and the links between project descriptions and their source. The portfolio text and illustrations are specific to my own work.
+[Ramzy’s portfolio](https://ramzy.framer.website/) is the visual reference for the typography, hero, sticky project stack, pastel cards, resume rows, skills panel and dark footer. Desktop measurements include a 1,016 px content width, 38 px section headings, 30 px project titles, 20 px project descriptions and 48 px buttons. The portfolio text and project illustrations describe my own work.
+
+[Hans’s portfolio](https://iecloudbird.github.io/portfolio/) informed the framework and the links between project descriptions and their source. Typography loads Satoshi from Fontshare, Hanken Grotesk from Google Fonts and Recoleta from the reference’s public Framer font URLs, with system fallbacks when those services are unavailable. Technology marks are from [Simple Icons](https://simpleicons.org/); their CC0 notice is included in `public/technologies/LICENSE.md`.
+
+The redesign was checked in Chromium at widths from 320 to 1,920 px, including normal and reduced motion, project deep links, keyboard access to stacked cards, marquee controls and mobile navigation. `npm run check` also verifies all seven exported HTML pages and their local links and assets.

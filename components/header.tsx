@@ -7,6 +7,7 @@ const links = [
   ["projects", "Projects"],
   ["experience", "Experience"],
   ["education", "Education"],
+  ["awards", "Awards"],
   ["skills", "Skills"],
 ] as const;
 
@@ -14,6 +15,15 @@ export function Header() {
   const [open, setOpen] = useState(false);
   const button = useRef<HTMLButtonElement>(null);
   const header = useRef<HTMLElement>(null);
+  useEffect(() => {
+    const update = () => {
+      if (header.current)
+        header.current.dataset.scrolled = String(window.scrollY > 20);
+    };
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    return () => window.removeEventListener("scroll", update);
+  }, []);
   useEffect(() => {
     if (!open) return;
     const close = (event: KeyboardEvent) => {
@@ -44,7 +54,7 @@ export function Header() {
   }, [open]);
   return (
     <header ref={header} className="site-header">
-      <div className="wrap flex h-[100px] items-center justify-between max-[760px]:h-20">
+      <div className="wrap header-inner">
         <Link
           className="brand"
           href="/"

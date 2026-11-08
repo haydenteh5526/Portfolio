@@ -3,18 +3,47 @@ import { ArrowUpRight } from "./icons";
 
 export function Footer() {
   return (
-    <footer className="wrap flex items-center justify-between gap-5 border-t border-line py-8 text-sm max-[520px]:items-start max-[520px]:flex-col">
-      <span className="font-serif text-xl font-bold text-ink">Hayden Teh</span>
-      <div className="flex gap-7">
-        <a
-          className="inline-flex items-center gap-1"
-          href={contact.github}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          GitHub <ArrowUpRight />
-        </a>
-        <a href="#top">Back to top ↑</a>
+    <footer
+      id="contact"
+      className="site-footer"
+      aria-labelledby="contact-heading"
+    >
+      <div className="wrap">
+        <div className="footer-heading">
+          <h2 id="contact-heading">Let’s have a chat.</h2>
+          <a
+            className="button button-light"
+            href={contact.cv}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View CV <ArrowUpRight />
+          </a>
+        </div>
+        <p className="footer-intro">
+          I’m seeking a graduate software engineering role where I can
+          contribute my experience in software engineering and AI automation
+          while continuing to learn.
+        </p>
+        <div className="footer-bottom">
+          <span>© Hayden Teh {new Date().getFullYear()}</span>
+          <nav className="footer-links" aria-label="Contact links">
+            <a href={contact.github} target="_blank" rel="noopener noreferrer">
+              GitHub
+            </a>
+            <a
+              href={contact.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LinkedIn
+            </a>
+            <a href={`mailto:${contact.email}`} aria-label="Email Hayden">
+              Mail
+            </a>
+            <a href="#top">Back to top ↑</a>
+          </nav>
+        </div>
       </div>
     </footer>
   );

@@ -1,5 +1,22 @@
 import type { SVGProps } from "react";
 
+export function LinkedInIcon() {
+  return (
+    <svg
+      className="size-5"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.7"
+      aria-hidden="true"
+    >
+      <rect x="3" y="9" width="4" height="12" rx=".5" />
+      <circle cx="5" cy="4.5" r="2" />
+      <path d="M11 21V9h4v2c1-3 6-3 6 2v8h-4v-7c0-2-2-2-2 0v7z" />
+    </svg>
+  );
+}
+
 export function ArrowUpRight({
   className = "size-4",
   ...props

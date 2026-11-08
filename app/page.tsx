@@ -1,8 +1,9 @@
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowUpRight, GitHubIcon } from "@/components/icons";
+import { ArrowUpRight, GitHubIcon, LinkedInIcon } from "@/components/icons";
 import { ProjectCard } from "@/components/project-card";
 import { Reveal } from "@/components/motion";
+import { ProjectStack } from "@/components/project-stack";
+import { TechnologyMarquee } from "@/components/technology-marquee";
 import { asset, contact, media, portfolio, skills } from "@/lib/site";
 
 export default function Home() {
@@ -12,7 +13,7 @@ export default function Home() {
   return (
     <main id="main" className="wrap">
       <section className="hero" aria-labelledby="intro-title">
-        <Reveal>
+        <Reveal className="hero-copy">
           <p className="hero-role">{portfolio.role}</p>
           <h1 id="intro-title">{portfolio.name}</h1>
           <p className="hero-intro">{portfolio.intro}</p>
@@ -32,18 +33,7 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              LinkedIn <ArrowUpRight />
-            </a>
-            <Link className="button button-blue" href="/#projects">
-              View Projects
-            </Link>
-            <a
-              className="text-link text-sm"
-              href={contact.cv}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              View CV <ArrowUpRight className="size-3.5" />
+              <LinkedInIcon /> LinkedIn
             </a>
           </div>
         </Reveal>
@@ -74,13 +64,11 @@ export default function Home() {
         <h2 id="projects-heading" className="section-title">
           Projects
         </h2>
-        <div className="grid gap-[38px] max-[520px]:gap-6">
+        <ProjectStack>
           {portfolio.projects.map((project) => (
-            <Reveal key={project.slug}>
-              <ProjectCard project={project} />
-            </Reveal>
+            <ProjectCard key={project.slug} project={project} />
           ))}
-        </div>
+        </ProjectStack>
         <p className="mt-9 text-center text-base">
           More Projects on{" "}
           <a
@@ -94,6 +82,8 @@ export default function Home() {
         </p>
       </section>
 
+      <TechnologyMarquee />
+
       <section
         id="experience"
         className="section"
@@ -102,32 +92,35 @@ export default function Home() {
         <h2 id="experience-heading" className="section-title">
           Professional Experience
         </h2>
-        <div className="grid gap-7">
+        <div className="resume-list">
           {portfolio.experience.map((item) => (
             <Reveal key={item.company}>
               <article className="experience-card">
-                <div>
-                  <h3 className="text-[28px] font-medium tracking-tight">
-                    {item.company}
-                  </h3>
-                  <p className="mt-1 text-sm">{item.role}</p>
-                  <p className="mt-2 text-sm">{item.location}</p>
-                  <p className="mt-5 text-[13px]">{item.dates}</p>
+                <div className="resume-heading">
+                  <div>
+                    <h3>{item.company}</h3>
+                    <p className="resume-role">{item.role}</p>
+                  </div>
+                  <div className="resume-meta">
+                    <p className="resume-location">{item.location}</p>
+                    <p>{item.dates}</p>
+                  </div>
                 </div>
                 <div className="experience-body">
-                  <p>{item.intro}</p>
-                  <div className="metrics">
-                    {item.metrics.map(([value, label]) => (
-                      <div key={value}>
-                        <strong>{value}</strong>
-                        <span>{label}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <p>{item.details}</p>
+                  <ul>
+                    <li>{item.intro}</li>
+                    <li>
+                      {item.metrics.map(([value, label]) => (
+                        <span className="experience-result" key={value}>
+                          <strong>{value}</strong> — {label.toLowerCase()}.
+                        </span>
+                      ))}
+                    </li>
+                    <li>{item.details}</li>
+                  </ul>
                   <p className="learning">
                     <strong>What I learned</strong>
-                    <br />
+                    {": "}
                     {item.learning}
                   </p>
                 </div>
@@ -145,21 +138,23 @@ export default function Home() {
         <h2 id="education-heading" className="section-title">
           Education
         </h2>
-        <div>
+        <div className="resume-list">
           {portfolio.education.map((item) => (
             <Reveal key={item.institution}>
               <article className="education-card">
-                <div>
-                  <h3>{item.institution}</h3>
-                  <p className="text-[15px]">{item.location}</p>
+                <div className="resume-heading">
+                  <div>
+                    <h3>{item.institution}</h3>
+                    <p className="resume-role">{item.qualification}</p>
+                  </div>
+                  <div className="resume-meta">
+                    <p className="resume-location">{item.location}</p>
+                    <p>{item.dates}</p>
+                  </div>
                 </div>
                 <div>
-                  <p>{item.qualification}</p>
-                  <p className="text-[15px]">{item.dates}</p>
-                  <p className="text-base font-bold text-ink">{item.result}</p>
-                  {item.note ? (
-                    <p className="text-[15px]">{item.note}</p>
-                  ) : null}
+                  <p className="font-bold">{item.result}</p>
+                  {item.note ? <p>{item.note}</p> : null}
                 </div>
               </article>
             </Reveal>
@@ -187,24 +182,17 @@ export default function Home() {
 
       <section id="skills" className="section" aria-labelledby="skills-heading">
         <h2 id="skills-heading" className="section-title">
-          Skills &amp; Technologies
+          Skills
         </h2>
-        <div className="grid grid-cols-2 gap-x-[60px] gap-y-7 max-[520px]:grid-cols-1">
-          {skills.map((group) => (
-            <Reveal key={group.title}>
-              <div className="h-full border-b border-line pb-7">
-                <h3 className="mb-5 text-lg font-medium text-ink">
-                  {group.title}
-                </h3>
-                <div className="skill-tags">
-                  {group.items.map((item) => (
-                    <span key={item}>{item}</span>
-                  ))}
-                </div>
-              </div>
-            </Reveal>
-          ))}
-        </div>
+        <Reveal>
+          <ul className="skill-tags" aria-label="Technical skills">
+            {skills
+              .flatMap((group) => group.items)
+              .map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+          </ul>
+        </Reveal>
       </section>
 
       {media.video ? (
@@ -242,42 +230,6 @@ export default function Home() {
           </a>
         </section>
       ) : null}
-
-      <section
-        id="contact"
-        className="contact"
-        aria-labelledby="contact-heading"
-      >
-        <div>
-          <h2 id="contact-heading">Let’s connect</h2>
-          <p>
-            I’m seeking a graduate software engineering role where I can
-            contribute my experience in software engineering and AI automation
-            while continuing to learn.
-          </p>
-        </div>
-        <div className="actions">
-          <a className="button" href={`mailto:${contact.email}`}>
-            Email Hayden <ArrowUpRight />
-          </a>
-          <a
-            className="button"
-            href={contact.github}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            GitHub <ArrowUpRight />
-          </a>
-          <a
-            className="button button-blue"
-            href={contact.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            LinkedIn <ArrowUpRight />
-          </a>
-        </div>
-      </section>
     </main>
   );
 }

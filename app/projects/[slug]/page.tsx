@@ -85,7 +85,7 @@ export default async function ProjectPage({ params }: Props) {
           <h2>Status</h2>
           <p>{project.status}</p>
           <h2>Technologies</h2>
-          <div className="skill-tags mb-7">
+          <div className="detail-skill-tags">
             {project.stack.map((item) => (
               <span key={item}>{item}</span>
             ))}

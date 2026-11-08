@@ -34,22 +34,3 @@ export function Reveal({
     </m.div>
   );
 }
-
-export function ProjectMotion({
-  children,
-  className,
-}: {
-  children: ReactNode;
-  className: string;
-}) {
-  const reduceMotion = useReducedMotion();
-  return (
-    <m.div
-      className={className}
-      whileHover={reduceMotion ? undefined : { y: -5 }}
-      transition={{ duration: 0.25 }}
-    >
-      {children}
-    </m.div>
-  );
-}

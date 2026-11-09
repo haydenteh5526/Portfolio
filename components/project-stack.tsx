@@ -11,7 +11,7 @@ import {
   type MotionValue,
 } from "framer-motion";
 
-// Keep the sticky items in one containing block so the entire pile leaves together.
+// Keep the items in one containing block so the entire pile leaves together.
 export function ProjectStack({ children }: { children: ReactNode }) {
   const { scrollY } = useScroll();
   return (
@@ -63,6 +63,11 @@ function StackItem({
       stride.set(height + gap);
       limit.set((siblings.length - index - 1) * 0.05);
       element.style.setProperty("--card-height", `${height}px`);
+      element.style.setProperty("--card-start", `${naturalTop}px`);
+      element.style.setProperty(
+        "--card-travel",
+        `${Math.max(0, list.offsetHeight - preceding - height)}px`,
+      );
       element.dataset.scrollTop = String(naturalTop);
     };
     const observer = new ResizeObserver(measure);
@@ -89,9 +94,10 @@ function StackItem({
       }
       onFocusCapture={(event) => {
         // Keyboard navigation must reveal a card even when later cards cover it.
+        const style = getComputedStyle(event.currentTarget);
         if (
           event.target.matches(":focus-visible") &&
-          getComputedStyle(event.currentTarget).position === "sticky"
+          (style.position === "sticky" || style.animationName === "project-pin")
         ) {
           const headerHeight =
             document.querySelector<HTMLElement>(".site-header")?.offsetHeight ??

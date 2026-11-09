@@ -288,8 +288,9 @@
     position: relative;
   }
   .project-stack-item {
+    --pin-top: calc(var(--stack-top) + var(--safe-top));
     position: sticky;
-    top: calc(var(--stack-top) + var(--safe-top));
+    top: var(--pin-top);
     transform-origin: center center;
   }
   .project-card {
@@ -911,7 +912,7 @@
   }
   .project-stack-item {
     /* Taller cards keep scrolling until their bottom fits above the safe area. */
-    top: min(
+    --pin-top: min(
       calc(var(--header-offset) + 8px + var(--phone-step)),
       calc(100svh - var(--safe-bottom) - var(--card-height, 0px) - 12px)
     );
@@ -1032,11 +1033,35 @@
     padding-inline: 16px;
   }
 }
+@keyframes project-pin {
+  from {
+    translate: 0 0;
+  }
+  to {
+    translate: 0 var(--card-travel);
+  }
+}
+
+@supports (-webkit-hyphens: none) and (animation-timeline: scroll(root)) and (animation-range: 1px 2px) {
+  @media (pointer: coarse) and (prefers-reduced-motion: no-preference) {
+    /* iOS Safari can extend sticky card colors into its toolbar. */
+    .project-stack-item[data-scroll-top] {
+      position: relative;
+      top: auto;
+      animation: project-pin auto linear both;
+      animation-timeline: scroll(root);
+      animation-range: calc(var(--card-start) - var(--pin-top))
+        calc(var(--card-start) - var(--pin-top) + var(--card-travel));
+    }
+  }
+}
+
 @media (min-width: 761px) and (max-height: 700px), (max-height: 460px) {
   .project-stack-item {
     position: relative;
     top: auto !important;
     transform: none !important;
+    animation: none !important;
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -1105,6 +1130,7 @@
     position: relative;
     top: auto !important;
     transform: none !important;
+    animation: none !important;
   }
   .project-card,
   .experience-card,

@@ -8,6 +8,7 @@ export const asset = (path: string) =>
 
 export const contact = {
   email: "haydenteh0@gmail.com",
+  formEndpoint: "https://formspree.io/f/xgaajgpq",
   github: "https://github.com/haydenteh5526",
   linkedin: "https://www.linkedin.com/in/haydenteh/",
   cv: "https://www.canva.com/d/fpEcfoZPNM7Fcmt",

@@ -18,7 +18,7 @@ export function Footer() {
               love to hear from you.
             </p>
           </div>
-          <ContactForm email={contact.email} />
+          <ContactForm email={contact.email} endpoint={contact.formEndpoint} />
         </div>
       </section>
       <footer className="site-footer">

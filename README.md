@@ -8,7 +8,9 @@ Built with **Next.js 15 (App Router), TypeScript, Tailwind CSS 4, shadcn/ui and 
 
 The homepage includes a personal portrait and CV link, scroll-linked project cards, a pausable colour technology marquee, CV-based achievement bullets, education with activities and relevant coursework, a skills panel and a contact form. Project cards use a regular vertical layout on phones, short screens and when reduced motion is enabled. Keyboard focus brings covered cards back into view.
 
-The contact form opens a prefilled draft in the visitor’s email app for review and sending. It also provides a direct email link. The reusable [shadcn/ui components](https://ui.shadcn.com/docs/components) are in `components/ui/`, with shared colour and radius tokens in `app/globals.css`.
+The contact form sends submissions through [Formspree](https://help.formspree.io/articles/building-your-form/building-an-html-form). The public form endpoint and fallback email are in `lib/site.ts`. Set the target inbox in the Formspree dashboard. To switch back to email drafts, clear `formEndpoint` and publish a new export.
+
+The reusable [shadcn/ui components](https://ui.shadcn.com/docs/components) are in `components/ui/`, with shared colour tokens in `app/globals.css`.
 
 ## Run locally
 

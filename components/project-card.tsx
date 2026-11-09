@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { asset, type Project } from "@/lib/site";
+import { Button } from "@/components/ui/button";
 
 export function ProjectCard({ project }: { project: Project }) {
   return (
@@ -12,13 +13,14 @@ export function ProjectCard({ project }: { project: Project }) {
         <h3 id={`${project.slug}-title`}>{project.name}</h3>
         <p>{project.summary}</p>
         <div className="project-actions">
-          <Link
-            className="button"
-            href={`/projects/${project.slug}/`}
-            aria-label={`View ${project.name} details`}
-          >
-            View Details
-          </Link>
+          <Button asChild size="portfolio">
+            <Link
+              href={`/projects/${project.slug}/`}
+              aria-label={`View ${project.name} details`}
+            >
+              View Details
+            </Link>
+          </Button>
         </div>
       </div>
       <figure className="project-visual">

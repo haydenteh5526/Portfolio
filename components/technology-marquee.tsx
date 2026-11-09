@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { asset } from "@/lib/site";
+import { Button } from "@/components/ui/button";
 
 const technologies = [
   ["python", "Python"],
@@ -28,9 +29,11 @@ export function TechnologyMarquee() {
     >
       <div className="technology-heading">
         <h2 id="technology-heading">Technologies &amp; Tools Experience</h2>
-        <button
+        <Button
           type="button"
-          className="marquee-toggle"
+          className="marquee-toggle text-muted-foreground"
+          size="icon"
+          variant="ghost"
           aria-label={
             paused ? "Play technology animation" : "Pause technology animation"
           }
@@ -38,7 +41,7 @@ export function TechnologyMarquee() {
           onClick={() => setPaused(!paused)}
         >
           <span aria-hidden="true">{paused ? "▶" : "Ⅱ"}</span>
-        </button>
+        </Button>
       </div>
       <div className="technology-window" data-paused={paused}>
         <div className="technology-track">

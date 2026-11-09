@@ -4,6 +4,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowUpRight } from "@/components/icons";
 import { asset, portfolio } from "@/lib/site";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 
 type Props = { params: Promise<{ slug: string }> };
 export const dynamicParams = false;
@@ -43,14 +45,15 @@ export default async function ProjectPage({ params }: Props) {
         <h1>{project.name}</h1>
         <p className="lead">{project.summary}</p>
         <div className="actions mt-7">
-          <a
-            className="button"
-            href={project.repository}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View repository <ArrowUpRight />
-          </a>
+          <Button asChild size="portfolio">
+            <a
+              href={project.repository}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View repository <ArrowUpRight />
+            </a>
+          </Button>
           <a
             className="text-link text-sm"
             href={project.evidence}
@@ -87,7 +90,13 @@ export default async function ProjectPage({ params }: Props) {
           <h2>Technologies</h2>
           <div className="detail-skill-tags">
             {project.stack.map((item) => (
-              <span key={item}>{item}</span>
+              <Badge
+                key={item}
+                variant="outline"
+                className="rounded-md bg-white px-2.5 py-1.5 font-normal"
+              >
+                {item}
+              </Badge>
             ))}
           </div>
           <a

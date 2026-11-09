@@ -1,50 +1,53 @@
 import { contact } from "@/lib/site";
-import { ArrowUpRight } from "./icons";
+import { ContactForm } from "./contact-form";
+import { BackToTop } from "./back-to-top";
 
 export function Footer() {
   return (
-    <footer
-      id="contact"
-      className="site-footer"
-      aria-labelledby="contact-heading"
-    >
-      <div className="wrap">
-        <div className="footer-heading">
-          <h2 id="contact-heading">Let’s have a chat.</h2>
-          <a
-            className="button button-light"
-            href={contact.cv}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View CV <ArrowUpRight />
-          </a>
+    <>
+      <section
+        id="contact"
+        className="contact-section"
+        aria-labelledby="contact-heading"
+      >
+        <div className="wrap">
+          <div className="contact-heading">
+            <h2 id="contact-heading">Send me a message.</h2>
+            <p>
+              Have an opportunity, a project idea or just want to say hello? I’d
+              love to hear from you.
+            </p>
+          </div>
+          <ContactForm email={contact.email} />
         </div>
-        <p className="footer-intro">
-          I’m seeking a graduate software engineering role where I can
-          contribute my experience in software engineering and AI automation
-          while continuing to learn.
-        </p>
-        <div className="footer-bottom">
-          <span>© Hayden Teh {new Date().getFullYear()}</span>
-          <nav className="footer-links" aria-label="Contact links">
-            <a href={contact.github} target="_blank" rel="noopener noreferrer">
-              GitHub
-            </a>
-            <a
-              href={contact.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              LinkedIn
-            </a>
-            <a href={`mailto:${contact.email}`} aria-label="Email Hayden">
-              Mail
-            </a>
-            <a href="#top">Back to top ↑</a>
-          </nav>
+      </section>
+      <footer className="site-footer">
+        <div className="wrap">
+          <div className="footer-bottom">
+            <span>© Hayden Teh {new Date().getFullYear()}</span>
+            <nav className="footer-links" aria-label="Contact links">
+              <a
+                href={contact.github}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                GitHub
+              </a>
+              <a
+                href={contact.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                LinkedIn
+              </a>
+              <a href={`mailto:${contact.email}`} aria-label="Email Hayden">
+                Mail
+              </a>
+            </nav>
+          </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+      <BackToTop />
+    </>
   );
 }

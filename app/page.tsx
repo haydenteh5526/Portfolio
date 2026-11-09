@@ -5,6 +5,8 @@ import { Reveal } from "@/components/motion";
 import { ProjectStack } from "@/components/project-stack";
 import { TechnologyMarquee } from "@/components/technology-marquee";
 import { asset, contact, media, portfolio, skills } from "@/lib/site";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 
 export default function Home() {
   const videoUrl = /^https:\/\//.test(media.video)
@@ -18,31 +20,30 @@ export default function Home() {
           <h1 id="intro-title">{portfolio.name}</h1>
           <p className="hero-intro">{portfolio.intro}</p>
           <div className="actions">
-            <a
-              className="button"
-              href={contact.github}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <GitHubIcon />
-              GitHub
-            </a>
-            <a
-              className="button button-blue"
-              href={contact.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <LinkedInIcon /> LinkedIn
-            </a>
-            <a
-              className="button button-light"
-              href={contact.cv}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              View CV <ArrowUpRight />
-            </a>
+            <Button asChild size="portfolio">
+              <a
+                href={contact.github}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <GitHubIcon />
+                GitHub
+              </a>
+            </Button>
+            <Button asChild variant="linkedin" size="portfolio">
+              <a
+                href={contact.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <LinkedInIcon /> LinkedIn
+              </a>
+            </Button>
+            <Button asChild variant="outline" size="portfolio">
+              <a href={contact.cv} target="_blank" rel="noopener noreferrer">
+                View CV <ArrowUpRight />
+              </a>
+            </Button>
           </div>
         </Reveal>
         <Reveal className="portrait">
@@ -228,7 +229,14 @@ export default function Home() {
             {skills
               .flatMap((group) => group.items)
               .map((item) => (
-                <li key={item}>{item}</li>
+                <li key={item}>
+                  <Badge
+                    variant="outline"
+                    className="rounded-lg bg-white px-3 py-2 text-base font-medium leading-[1.4] tracking-[-0.3px] text-[#444] min-[761px]:text-lg"
+                  >
+                    {item}
+                  </Badge>
+                </li>
               ))}
           </ul>
         </Reveal>
@@ -259,14 +267,11 @@ export default function Home() {
               ) : null}
             </video>
           ) : null}
-          <a
-            className="button mt-5"
-            href={videoUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Watch my elevator pitch <ArrowUpRight />
-          </a>
+          <Button asChild size="portfolio" className="mt-5">
+            <a href={videoUrl} target="_blank" rel="noopener noreferrer">
+              Watch my elevator pitch <ArrowUpRight />
+            </a>
+          </Button>
         </section>
       ) : null}
     </main>

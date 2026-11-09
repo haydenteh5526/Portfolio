@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export default function NotFound() {
   return (
@@ -7,9 +8,9 @@ export default function NotFound() {
       <p className="my-6">
         Explore my projects and experience from the portfolio homepage.
       </p>
-      <Link className="button" href="/">
-        Back to the portfolio
-      </Link>
+      <Button asChild size="portfolio">
+        <Link href="/">Back to the portfolio</Link>
+      </Button>
     </main>
   );
 }

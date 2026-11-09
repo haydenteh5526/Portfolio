@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { Button } from "@/components/ui/button";
 
 const links = [
   ["projects", "Projects"],
@@ -63,9 +64,11 @@ export function Header() {
         >
           Hayden.
         </Link>
-        <button
+        <Button
           ref={button}
-          className="menu-toggle"
+          className="menu-toggle hidden max-[760px]:inline-flex"
+          variant="ghost"
+          size="icon-lg"
           type="button"
           aria-controls="site-nav"
           aria-expanded={open}
@@ -84,7 +87,7 @@ export function Header() {
               d={open ? "M6 6l12 12M6 18 18 6" : "M3 7h18M3 12h18M3 17h18"}
             />
           </svg>
-        </button>
+        </Button>
         <nav
           id="site-nav"
           className="site-nav"
@@ -96,13 +99,15 @@ export function Header() {
               {label}
             </Link>
           ))}
-          <Link
-            className="nav-contact"
-            href="/#contact"
-            onClick={() => setOpen(false)}
-          >
-            Get in Touch
-          </Link>
+          <Button asChild variant="outline" className="h-10 px-5 text-base">
+            <Link
+              className="nav-contact"
+              href="/#contact"
+              onClick={() => setOpen(false)}
+            >
+              Get in Touch
+            </Link>
+          </Button>
         </nav>
       </div>
     </header>

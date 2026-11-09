@@ -31,7 +31,7 @@ export function TechnologyMarquee() {
         <h2 id="technology-heading">Technologies &amp; Tools Experience</h2>
         <Button
           type="button"
-          className="marquee-toggle text-muted-foreground"
+          className="marquee-toggle size-7 rounded-full text-[13px] text-[#777] hover:bg-[#eaeaea]"
           size="icon"
           variant="ghost"
           aria-label={

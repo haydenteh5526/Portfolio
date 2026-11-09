@@ -99,7 +99,11 @@ export function Header() {
               {label}
             </Link>
           ))}
-          <Button asChild variant="outline" className="h-10 px-5 text-base">
+          <Button
+            asChild
+            variant="outline"
+            className="h-10 rounded-full px-5 text-base leading-6 font-normal tracking-[-0.16px] shadow-[0_1px_2px_#1e151526] hover:bg-white"
+          >
             <Link
               className="nav-contact"
               href="/#contact"

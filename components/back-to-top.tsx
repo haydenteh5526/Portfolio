@@ -22,7 +22,7 @@ export function BackToTop() {
       asChild
       size="icon"
       variant="outline"
-      className="back-to-top size-12 rounded-full shadow-lg transition-[opacity,transform,visibility,background-color]"
+      className="back-to-top size-12 rounded-full border border-border shadow-lg transition-[opacity,transform,visibility,background-color]"
     >
       <a
         ref={link}

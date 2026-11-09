@@ -6,7 +6,7 @@ A personal portfolio with five project case studies, internship experience at Er
 
 Built with **Next.js 15 (App Router), TypeScript, Tailwind CSS 4, shadcn/ui and Framer Motion**. All routes are generated at build time for GitHub Pages. The page content is present in the exported HTML, and the animations respect reduced-motion preferences.
 
-The homepage includes a personal portrait and CV link, scroll-linked project cards, a pausable colour technology marquee, CV-based achievement bullets, education with activities and relevant coursework, a skills panel and a contact form. Project cards use a regular vertical layout on phones, short screens and when reduced motion is enabled. Keyboard focus brings covered cards back into view.
+The homepage includes a personal portrait and CV link, scroll-linked project cards, a pausable colour technology marquee, CV-based achievement bullets, education with activities and relevant coursework, a skills panel and a contact form. Project cards stack on desktop and portrait phones. They use a regular vertical layout when the viewport is too short or reduced motion is enabled. Keyboard focus brings covered cards back into view.
 
 The contact form sends submissions through [Formspree](https://help.formspree.io/articles/building-your-form/building-an-html-form). The public form endpoint and fallback email are in `lib/site.ts`. Set the target inbox in the Formspree dashboard. To switch back to email drafts, clear `formEndpoint` and publish a new export.
 

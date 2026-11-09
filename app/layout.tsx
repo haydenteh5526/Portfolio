@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
@@ -16,6 +16,8 @@ export const metadata: Metadata = {
   openGraph: { type: "website", locale: "en_IE", siteName: "Hayden Teh" },
   robots: { index: true, follow: true },
 };
+
+export const viewport: Viewport = { viewportFit: "cover" };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (

@@ -7,6 +7,7 @@ import {
   useReducedMotion,
   useScroll,
   useTransform,
+  type MotionStyle,
   type MotionValue,
 } from "framer-motion";
 
@@ -42,6 +43,7 @@ function StackItem({
     const progress = Math.max(0, (scrollY.get() - start.get()) / stride.get());
     return 1 - Math.min(limit.get(), progress * 0.05);
   });
+  const depth = Math.min(index, 3);
 
   useEffect(() => {
     const element = item.current;
@@ -56,9 +58,11 @@ function StackItem({
       // Measure normal flow, not the sticky element's moving viewport position.
       const naturalTop =
         list.getBoundingClientRect().top + window.scrollY + preceding;
-      start.set(naturalTop + element.offsetHeight / 2);
-      stride.set(element.offsetHeight + gap);
+      const height = element.offsetHeight;
+      start.set(naturalTop + height / 2);
+      stride.set(height + gap);
       limit.set((siblings.length - index - 1) * 0.05);
+      element.style.setProperty("--card-height", `${height}px`);
       element.dataset.scrollTop = String(naturalTop);
     };
     const observer = new ResizeObserver(measure);
@@ -76,18 +80,26 @@ function StackItem({
     <m.div
       ref={item}
       className="project-stack-item"
-      style={{
-        top: [100, 130, 170, 210][Math.min(index, 3)],
-        scale: reduceMotion ? 1 : scale,
-      }}
+      style={
+        {
+          "--stack-top": `${[100, 130, 170, 210][depth]}px`,
+          "--phone-step": `${12 * depth}px`,
+          scale: reduceMotion ? 1 : scale,
+        } as MotionStyle
+      }
       onFocusCapture={(event) => {
         // Keyboard navigation must reveal a card even when later cards cover it.
         if (
           event.target.matches(":focus-visible") &&
           getComputedStyle(event.currentTarget).position === "sticky"
         ) {
+          const headerHeight =
+            document.querySelector<HTMLElement>(".site-header")?.offsetHeight ??
+            0;
           window.scrollTo({
-            top: Number(event.currentTarget.dataset.scrollTop) - 120,
+            top:
+              Number(event.currentTarget.dataset.scrollTop) -
+              Math.max(120, headerHeight + 12),
             behavior: "instant",
           });
         }

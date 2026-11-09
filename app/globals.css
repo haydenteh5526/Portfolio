@@ -43,6 +43,16 @@
   --ring: #8e8a82;
   --destructive: #dc2626;
   --radius: 0.5rem;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --page-gutter: max(
+    24px,
+    env(safe-area-inset-left, 0px),
+    env(safe-area-inset-right, 0px)
+  );
+  --header-height: 102px;
+  --header-offset: calc(var(--header-height) + var(--safe-top));
+  --footer-background: #111;
 }
 @theme inline {
   --color-background: var(--background);
@@ -66,8 +76,9 @@
 }
 @layer base {
   html {
+    background-color: var(--footer-background);
     scroll-behavior: smooth;
-    scroll-padding-top: 130px;
+    scroll-padding-top: calc(var(--header-offset) + 28px);
   }
   body {
     @apply m-0 bg-paper font-sans text-lg leading-[1.4] text-body antialiased;
@@ -101,7 +112,7 @@
 }
 @layer components {
   .wrap {
-    width: min(1016px, calc(100% - 48px));
+    width: min(1016px, calc(100% - 2 * var(--page-gutter)));
     margin-inline: auto;
   }
   .skip-link {
@@ -111,11 +122,12 @@
     position: sticky;
     top: 0;
     z-index: 50;
+    padding-top: var(--safe-top);
     background: #fff;
   }
   .header-inner {
     display: flex;
-    height: 102px;
+    height: var(--header-height);
     align-items: center;
     justify-content: space-between;
   }
@@ -278,6 +290,7 @@
   }
   .project-stack-item {
     position: sticky;
+    top: calc(var(--stack-top) + var(--safe-top));
     transform-origin: center center;
   }
   .project-card {
@@ -603,9 +616,9 @@
     color: #b42318;
   }
   .site-footer {
-    background: #111;
+    background: var(--footer-background);
     color: #f9f8f5;
-    padding: 28px 0;
+    padding: 28px 0 calc(28px + var(--safe-bottom));
   }
   .footer-bottom {
     display: flex;
@@ -632,8 +645,8 @@
   .back-to-top {
     position: fixed;
     z-index: 40;
-    right: max(24px, env(safe-area-inset-right));
-    bottom: max(24px, env(safe-area-inset-bottom));
+    right: var(--page-gutter);
+    bottom: calc(24px + var(--safe-bottom));
     visibility: hidden;
     opacity: 0;
     transform: translateY(8px);
@@ -777,8 +790,11 @@
   }
 }
 @media (max-width: 760px) {
+  :root {
+    --header-height: 92px;
+  }
   .contact-section {
-    padding: 64px 8px 56px;
+    padding: 64px 0 56px;
   }
   .contact-heading {
     margin-bottom: 32px;
@@ -795,7 +811,7 @@
     margin-bottom: 20px;
   }
   .site-footer {
-    padding: 24px 8px 92px;
+    padding: 24px 0 calc(72px + var(--safe-bottom));
   }
   .footer-bottom {
     justify-content: center;
@@ -803,19 +819,12 @@
     gap: 16px;
   }
   .back-to-top {
-    right: max(16px, env(safe-area-inset-right));
-    bottom: max(16px, env(safe-area-inset-bottom));
+    right: max(16px, env(safe-area-inset-right, 0px));
+    bottom: calc(16px + var(--safe-bottom));
   }
 
   html {
-    scroll-padding-top: 112px;
-  }
-  .wrap {
-    width: calc(100% - 32px);
-  }
-  .header-inner {
-    height: 92px;
-    padding-inline: 8px;
+    scroll-padding-top: calc(var(--header-offset) + 20px);
   }
   .brand {
     order: 2;
@@ -827,7 +836,10 @@
   .site-nav {
     display: none;
     position: absolute;
-    inset: 82px 16px auto;
+    inset: calc(var(--header-offset) - 10px) var(--page-gutter) auto;
+    max-height: calc(100svh - var(--header-offset) - var(--safe-bottom));
+    overflow-y: auto;
+    overscroll-behavior: contain;
     padding: 16px;
     border: 1px solid #e8e5df;
     border-radius: 20px;
@@ -892,7 +904,6 @@
   }
   .section-title {
     margin-bottom: 32px;
-    padding-inline: 24px;
     font-size: 30px;
     letter-spacing: -0.5px;
   }
@@ -900,14 +911,17 @@
     gap: 32px;
   }
   .project-stack-item {
-    position: relative;
-    top: auto !important;
-    transform: none !important;
+    /* Taller cards keep scrolling until their bottom fits above the safe area. */
+    top: min(
+      calc(var(--header-offset) + 8px + var(--phone-step)),
+      calc(100svh - var(--safe-bottom) - var(--card-height, 0px) - 12px)
+    );
+    transform-origin: center top;
   }
   .project-card {
     grid-template-columns: minmax(0, 1fr);
-    gap: 48px;
-    padding: 48px 32px;
+    gap: 24px;
+    padding: 32px 24px;
   }
   .project-copy {
     align-items: center;
@@ -918,17 +932,19 @@
     font-size: 26px;
   }
   .project-copy > p {
-    font-size: 20px;
+    font-size: 18px;
   }
   .project-actions {
-    padding-top: 34px;
+    padding-top: 22px;
   }
   .project-visual a {
     min-height: 0;
-    aspect-ratio: 1.29;
+    height: auto;
+    max-height: clamp(120px, 28svh, 250px);
+    aspect-ratio: 1.44;
   }
   .technology-section {
-    padding: 48px 24px 64px;
+    padding: 48px 0 64px;
   }
   .technology-heading h2 {
     font-size: 30px;
@@ -943,9 +959,6 @@
   }
   .more-projects {
     font-size: 22px;
-  }
-  .resume-list {
-    padding-inline: 16px;
   }
   .resume-heading,
   .education-card .resume-heading,
@@ -1016,17 +1029,11 @@
   .hero h1 {
     font-size: 34px;
   }
-  .project-card {
-    padding: 40px 24px;
-  }
-  .project-copy > p {
-    font-size: 19px;
-  }
   .skill-tags {
     padding-inline: 16px;
   }
 }
-@media (max-height: 700px) {
+@media (min-width: 761px) and (max-height: 700px), (max-height: 460px) {
   .project-stack-item {
     position: relative;
     top: auto !important;

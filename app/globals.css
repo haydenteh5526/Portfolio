@@ -622,49 +622,12 @@
     gap: 24px;
     color: #dedcd8;
   }
-  .footer-links > :is(a, button) {
+  .footer-links > a {
     padding-block: 12px;
   }
-  .footer-links > :is(a, button):hover {
+  .footer-links > a:hover {
     color: #fff;
     text-decoration: underline;
-  }
-  .footer-email {
-    position: fixed;
-    inset: auto max(24px, calc((100% - 1016px) / 2)) 112px auto;
-    width: min(256px, calc(100% - 32px));
-    max-height: calc(100dvh - 160px);
-    margin: 0;
-    padding: 16px;
-    border: 1px solid var(--color-line);
-    border-radius: 16px;
-    background: var(--color-paper);
-    color: var(--color-ink);
-    box-shadow: 0 8px 28px #1e151522;
-    overflow: auto;
-  }
-  #footer-email-heading {
-    font-weight: 700;
-  }
-  .footer-email-address {
-    margin: 4px 0 12px;
-    color: var(--muted-foreground);
-    overflow-wrap: anywhere;
-  }
-  .footer-email a {
-    display: block;
-    padding: 8px;
-    border-radius: 8px;
-  }
-  .footer-email a:hover {
-    background: #ebe8e2;
-  }
-  @supports (position-area: top) {
-    .footer-email {
-      inset: auto;
-      position-area: top span-left;
-      margin-bottom: 10px;
-    }
   }
   .back-to-top {
     position: fixed;

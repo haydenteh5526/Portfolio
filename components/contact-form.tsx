@@ -18,7 +18,7 @@ const messages = {
 };
 
 const fieldStyle =
-  "rounded-xl border-line bg-white px-4 text-base text-ink shadow-none focus-visible:border-blue focus-visible:ring-blue/20 md:text-base dark:bg-white";
+  "rounded-none border-x-0 border-t-0 border-b-2 border-[#938c82] bg-transparent px-0 text-base text-ink shadow-none focus-visible:border-blue focus-visible:ring-0 md:text-base dark:bg-transparent";
 
 export function ContactForm({
   email,
@@ -139,10 +139,10 @@ export function ContactForm({
             id="contact-message"
             name="message"
             placeholder="Hi Hayden, I’d love to discuss an opportunity with you…"
-            rows={6}
+            rows={4}
             maxLength={1500}
             required
-            className={`${fieldStyle} min-h-36 resize-y py-3`}
+            className={`${fieldStyle} min-h-32 resize-y py-3`}
           />
         </div>
       </fieldset>

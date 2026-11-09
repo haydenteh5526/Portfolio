@@ -68,7 +68,7 @@
     {
       "slug": "coursexcel",
       "name": "CourseXcel",
-      "category": "Team Leader · September – December 2024",
+      "category": "Team Leader · September 2024 – December 2024",
       "tone": "peach",
       "art": "coursexcel.svg",
       "artAlt": "Project illustration connecting subject assignments, lecturer claims and departmental reports",
@@ -107,8 +107,7 @@
       "company": "Ericsson",
       "role": "Software Engineering Intern",
       "location": "Athlone, Ireland",
-      "dates": "January – July 2026",
-      "learning": "Useful AI needs safeguards and dependable integration with the team’s existing workflow.",
+      "dates": "January 2026 – July 2026",
       "bullets": [
         "Developed a CLI AI agent (kiro-cli) to replace legacy Java code across three departments, achieving 3.5-second latency at approximately 190 MB of memory, with two-stage human approval before writes.",
         "Standardised pipeline architecture and accelerated deployment across multiple repositories by migrating legacy Gerrit workflows to GitLab CI using Docker, Helm and Gradle.",
@@ -119,8 +118,7 @@
       "company": "Jabil",
       "role": "MLOps Intern",
       "location": "Penang, Malaysia",
-      "dates": "January – June 2025",
-      "learning": "Evaluate AI through measurable results and how well it fits the people using it.",
+      "dates": "January 2025 – June 2025",
       "bullets": [
         "Developed an OCR-based sticker extraction system with a self-trained AI model, improving data processing accuracy by 35% and reducing manual validation time by 50%.",
         "Achieved 98% text-extraction accuracy and 94% LLM response accuracy by integrating PaddleOCR and Amazon Bedrock pipelines using Claude and Qwen to process PDF documents.",
@@ -130,27 +128,74 @@
   ],
   "education": [
     {
-      "institution": "Technological University of the Shannon",
+      "institution": "Technological University of the Shannon: Midlands",
       "location": "Athlone, Ireland",
-      "qualification": "BSc (Honours) in Software Design with Artificial Intelligence for Cloud Computing",
-      "dates": "Expected graduation: May 2027",
-      "result": "Level 8 · Current average: 80%",
-      "note": "DocVault is my final-year project."
+      "qualification": "Bachelor of Science (Honours) in Software Design with Artificial Intelligence for Cloud Computing (Level 8)",
+      "dates": "Expected Graduation: May 2027",
+      "result": {
+        "label": "Average:",
+        "value": "80%",
+        "honours": "First Class Honours"
+      },
+      "activities": [
+        {
+          "lead": "NASA Space Apps Challenge 2025 participant — developed ",
+          "label": "Exoplanet AI Hunter",
+          "url": "https://github.com/haydenteh5526/Exoplanet-AI-Hunter",
+          "detail": ", a machine-learning web app using NASA mission data."
+        }
+      ],
+      "coursework": [
+        "Software Engineering",
+        "Software Development",
+        "Software Development for Cloud",
+        "Data Mining and Machine Learning",
+        "Data Visualisation",
+        "Databases",
+        "Networks"
+      ]
     },
     {
       "institution": "INTI International College Penang",
       "location": "Penang, Malaysia",
       "qualification": "Diploma in Computer Science",
-      "dates": "Graduated April 2025",
-      "result": "CGPA: 3.85 / 4.00 · Dean’s List",
-      "note": ""
+      "dates": "Graduation Date: April 2025",
+      "result": {
+        "label": "CGPA:",
+        "value": "3.85/4.00",
+        "honours": "Dean’s List"
+      },
+      "activities": [
+        {
+          "lead": "Returned as an alumnus to judge the ",
+          "label": "FYP Exhibition 2025",
+          "url": "https://www.linkedin.com/posts/haydenteh_honoured-to-return-to-inti-international-activity-7399386511760171008-GS9O",
+          "detail": " on 12 June 2025, providing feedback on students’ projects and presentations."
+        },
+        {
+          "lead": "Final-year project: ",
+          "label": "CourseXcel",
+          "url": "https://github.com/haydenteh5526/CourseXcel",
+          "detail": " — led development of a college administration app for subject assignments, lecturer claims and departmental reporting."
+        }
+      ],
+      "coursework": [
+        "Data Structures",
+        "Object-Oriented Programming",
+        "High-Level Programming",
+        "Rapid Application Development",
+        "Operating Systems",
+        "Cybersecurity",
+        "Computer Architecture",
+        "Database Management"
+      ]
     }
   ],
   "awards": [
     {
       "title": "Huawei Intelligent World 2030 & IBM Bootcamp",
       "result": "Team Champion",
-      "dates": "June & September 2024",
+      "dates": "June 2024 & September 2024",
       "location": "Penang, Malaysia",
       "bullets": [
         "Secured first place at both the Huawei Intelligent World 2030 and IBM Bootcamp pitching sessions among more than 20 competing teams."

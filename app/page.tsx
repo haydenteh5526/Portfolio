@@ -119,10 +119,6 @@ export default function Home() {
                       <li key={bullet}>{bullet}</li>
                     ))}
                   </ul>
-                  <details className="learning">
-                    <summary>What I learned</summary>
-                    <p>{item.learning}</p>
-                  </details>
                 </div>
               </article>
             </Reveal>
@@ -153,9 +149,39 @@ export default function Home() {
                   </div>
                 </div>
                 <ul className="education-highlights">
-                  <li className="font-bold">{item.result}</li>
-                  {item.note ? <li>{item.note}</li> : null}
+                  <li>
+                    <strong>{item.result.label}</strong> {item.result.value},{" "}
+                    <em>{item.result.honours}</em>
+                  </li>
                 </ul>
+                <div className="education-details">
+                  <div>
+                    <h4>Activities:</h4>
+                    <ul className="education-activities">
+                      {item.activities.map((activity) => (
+                        <li key={activity.label}>
+                          {activity.lead}
+                          <a
+                            href={activity.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {activity.label}
+                          </a>
+                          {activity.detail}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div>
+                    <h4>Relevant Coursework:</h4>
+                    <ul>
+                      {item.coursework.map((course) => (
+                        <li key={course}>{course}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
               </article>
             </Reveal>
           ))}

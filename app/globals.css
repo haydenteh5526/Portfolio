@@ -44,7 +44,6 @@
   }
   a:focus-visible,
   button:focus-visible,
-  summary:focus-visible,
   video:focus-visible {
     outline: 3px solid #0078aa;
     outline-offset: 5px;
@@ -494,18 +493,6 @@
     padding-left: 0;
     margin-bottom: 10px;
   }
-  .learning {
-    margin-top: 20px;
-    font-size: 16px;
-  }
-  .learning summary {
-    cursor: pointer;
-    width: fit-content;
-    color: #555;
-  }
-  .learning p {
-    margin-top: 12px;
-  }
   .education-card h3 {
     font-family: var(--font-ui);
     font-size: 32px;
@@ -520,8 +507,34 @@
     padding-left: 25px;
     list-style: disc;
   }
-  .education-highlights li + li {
-    margin-top: 10px;
+  .education-details {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px;
+    margin-top: 32px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: -0.3px;
+  }
+  .education-details h4 {
+    font-weight: 700;
+  }
+  .education-details ul {
+    list-style: disc;
+    padding-left: 25px;
+  }
+  .education-activities li + li {
+    margin-top: 12px;
+  }
+  .education-activities a {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-decoration-color: #b2b0aa;
+  }
+  .education-activities a:hover {
+    color: var(--color-ink);
+    text-decoration-color: currentColor;
   }
   .skill-tags {
     display: flex;
@@ -880,7 +893,8 @@
     padding-inline: 16px;
   }
   .resume-heading,
-  .education-card .resume-heading {
+  .education-card .resume-heading,
+  .education-details {
     grid-template-columns: minmax(0, 1fr);
     gap: 16px;
   }
@@ -902,6 +916,10 @@
   }
   .education-card h3 {
     font-size: 28px;
+  }
+  .education-details {
+    font-size: 17px;
+    gap: 24px;
   }
   .skill-tags {
     padding: 32px 20px;

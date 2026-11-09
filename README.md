@@ -22,6 +22,4 @@ Feel free to reach out about opportunities, collaboration or just to say hello. 
 
 ---
 
-Design inspired by [Ramzy Izza Wardhana](https://ramzy.framer.website/) and [Shean Hans Teoh](https://iecloudbird.github.io/portfolio/).
-
 © 2026 Hayden Teh. All rights reserved.

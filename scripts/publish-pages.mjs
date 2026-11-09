@@ -1,13 +1,12 @@
 import { spawnSync } from "node:child_process";
-import { mkdtemp, cp, writeFile, rm, realpath } from "node:fs/promises";
-import { tmpdir } from "node:os";
-import { resolve, dirname } from "node:path";
+import { cp, realpath, stat, writeFile } from "node:fs/promises";
+import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
-const root = fileURLToPath(new URL("../", import.meta.url));
-function git(args, cwd = root) {
+const root = await realpath(fileURLToPath(new URL("../", import.meta.url)));
+function git(args) {
   const result = spawnSync("git", args, {
-    cwd,
+    cwd: root,
     encoding: "utf8",
     env: { ...process.env, GIT_TERMINAL_PROMPT: "0" },
   });
@@ -19,37 +18,29 @@ function git(args, cwd = root) {
 const remote = git(["remote", "get-url", "origin"]);
 if (remote !== "https://github.com/haydenteh5526/Portfolio.git")
   throw new Error("Unexpected publishing repository");
+if (git(["branch", "--show-current"]) !== "main")
+  throw new Error("Publish from main");
 if (git(["status", "--porcelain"]))
   throw new Error("Commit source changes before publishing");
-const revision = git(["rev-parse", "--short", "HEAD"]);
-const authorName = git(["config", "user.name"]);
-const authorEmail = git(["config", "user.email"]);
-const temporaryRoot = await realpath(tmpdir());
-const staging = await mkdtemp(
-  resolve(temporaryRoot, "hayden-portfolio-pages-"),
-);
-if (dirname(staging) !== temporaryRoot)
-  throw new Error("Invalid publishing directory");
-try {
-  await cp(resolve(root, "out"), staging, { recursive: true });
-  await writeFile(resolve(staging, ".nojekyll"), "");
-  git(["init", "--initial-branch=gh-pages"], staging);
-  git(["config", "user.name", authorName], staging);
-  git(["config", "user.email", authorEmail], staging);
-  git(["remote", "add", "origin", remote], staging);
-  const ref = git(["ls-remote", "--heads", "origin", "gh-pages"]);
-  if (ref) {
-    git(["fetch", "--depth=1", "origin", "gh-pages"], staging);
-    git(["reset", "--soft", "FETCH_HEAD"], staging);
-  }
-  git(["add", "--all"], staging);
-  git(
-    ["commit", "--allow-empty", "-m", `deploy: publish portfolio ${revision}`],
-    staging,
-  );
-  git(["push", "origin", "HEAD:gh-pages"], staging);
-  console.log(`Published export from ${revision} to gh-pages.`);
-} finally {
-  // The verified, unique temporary directory is the only removal target.
-  await rm(staging, { recursive: true, force: true });
+
+const docs = resolve(root, "docs");
+const output = resolve(root, "out");
+if (
+  (await realpath(docs)) !== docs ||
+  !(await stat(resolve(docs, ".nojekyll"))).isFile()
+)
+  throw new Error("Expected the generated Pages directory at docs/");
+if (!(await stat(resolve(output, "index.html"))).isFile())
+  throw new Error("Build the portfolio before publishing");
+
+// Replace tracked export files, including any old hashed assets.
+git(["rm", "-r", "--", "docs"]);
+await cp(output, docs, { recursive: true });
+await writeFile(resolve(docs, ".nojekyll"), "");
+git(["add", "--", "docs"]);
+
+if (git(["diff", "--cached", "--name-only", "--", "docs"])) {
+  git(["commit", "-m", "deploy: update portfolio export"]);
 }
+git(["push", "origin", "main"]);
+console.log("Published the export from main/docs.");

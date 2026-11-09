@@ -10,12 +10,15 @@ import { createContactDraft } from "@/lib/contact-draft";
 const messages = {
   idle: "",
   draft:
-    "If your email app didn’t open, you can copy your message and use the address below.",
+    "If your email app didn’t open, copy your message and use Email in the footer.",
   sending: "Sending your message…",
   sent: "Thanks for your message. It has been sent.",
   error:
     "I couldn’t confirm that your message was sent. Your text is still here. Please try again or email me directly.",
 };
+
+const fieldStyle =
+  "rounded-xl border-line bg-white px-4 text-base text-ink shadow-none focus-visible:border-blue focus-visible:ring-blue/20 md:text-base dark:bg-white";
 
 export function ContactForm({
   email,
@@ -77,7 +80,7 @@ export function ContactForm({
     <form
       className="contact-form"
       aria-label="Contact Hayden"
-      aria-describedby="contact-form-note"
+      aria-describedby={endpoint ? undefined : "contact-form-note"}
       action={endpoint || `mailto:${email}`}
       method="post"
       encType={endpoint ? "multipart/form-data" : "text/plain"}
@@ -113,7 +116,7 @@ export function ContactForm({
               placeholder="Enter your name"
               maxLength={100}
               required
-              className="h-12 rounded-lg bg-white px-4 text-base md:text-base"
+              className={`${fieldStyle} h-12`}
             />
           </div>
           <div className="contact-field">
@@ -126,7 +129,7 @@ export function ContactForm({
               placeholder="you@example.com"
               maxLength={254}
               required
-              className="h-12 rounded-lg bg-white px-4 text-base md:text-base"
+              className={`${fieldStyle} h-12`}
             />
           </div>
         </div>
@@ -139,24 +142,19 @@ export function ContactForm({
             rows={6}
             maxLength={1500}
             required
-            className="min-h-40 resize-y rounded-lg bg-white p-4 text-base md:text-base"
+            className={`${fieldStyle} min-h-36 resize-y py-3`}
           />
         </div>
       </fieldset>
       <div className="contact-submit">
-        <p id="contact-form-note">
-          {endpoint
-            ? "Send a message directly from this page."
-            : "Opens a draft in your email app for you to review and send."}
-        </p>
+        {endpoint ? null : (
+          <p id="contact-form-note">Opens a draft in your email app.</p>
+        )}
         <Button type="submit" size="portfolio" disabled={status === "sending"}>
           {endpoint ? "Send message" : "Open email draft"} <ArrowRight />
         </Button>
         <p className="contact-status" role="status" data-state={status}>
           {messages[status]}
-        </p>
-        <p className="contact-direct">
-          Prefer to email directly? <a href={`mailto:${email}`}>{email}</a>
         </p>
       </div>
     </form>

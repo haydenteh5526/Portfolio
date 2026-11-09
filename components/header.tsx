@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 
@@ -14,17 +15,34 @@ const links = [
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
   const button = useRef<HTMLButtonElement>(null);
   const header = useRef<HTMLElement>(null);
   useEffect(() => {
+    const element = header.current;
+    const projects = document.getElementById("projects");
+    if (!element || !projects) return;
+    const firstCard = projects.querySelector(".project-stack-list") ?? projects;
+    const compact = window.matchMedia("(width < 1200px)");
+
     const update = () => {
-      if (header.current)
-        header.current.dataset.scrolled = String(window.scrollY > 20);
+      const trigger = compact.matches ? projects : firstCard;
+      const midpoint = window.innerHeight / 2 + (compact.matches ? 20 : 0);
+      const scrolled = String(
+        window.scrollY > 0 && trigger.getBoundingClientRect().top <= midpoint,
+      );
+      if (element.dataset.scrolled !== scrolled) {
+        element.dataset.scrolled = scrolled;
+      }
     };
     update();
     window.addEventListener("scroll", update, { passive: true });
-    return () => window.removeEventListener("scroll", update);
-  }, []);
+    window.addEventListener("resize", update);
+    return () => {
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
+  }, [pathname]);
   useEffect(() => {
     if (!open) return;
     const close = (event: KeyboardEvent) => {
@@ -54,7 +72,7 @@ export function Header() {
     };
   }, [open]);
   return (
-    <header ref={header} className="site-header">
+    <header ref={header} className="site-header" data-menu-open={open}>
       <div className="wrap header-inner">
         <Link
           className="brand"

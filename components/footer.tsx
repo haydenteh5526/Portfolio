@@ -3,6 +3,8 @@ import { ContactForm } from "./contact-form";
 import { BackToTop } from "./back-to-top";
 
 export function Footer() {
+  const recipient = encodeURIComponent(contact.email);
+
   return (
     <>
       <section
@@ -40,9 +42,34 @@ export function Footer() {
               >
                 LinkedIn
               </a>
-              <a href={`mailto:${contact.email}`} aria-label="Email Hayden">
-                Mail
-              </a>
+              <button type="button" popoverTarget="footer-email">
+                Email
+              </button>
+              <div
+                id="footer-email"
+                className="footer-email"
+                popover="auto"
+                role="group"
+                aria-labelledby="footer-email-heading"
+              >
+                <p id="footer-email-heading">Compose an email</p>
+                <p className="footer-email-address">{contact.email}</p>
+                <a href={`mailto:${contact.email}`}>Default email app</a>
+                <a
+                  href={`https://mail.google.com/mail/?view=cm&fs=1&to=${recipient}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Gmail
+                </a>
+                <a
+                  href={`https://outlook.live.com/mail/0/deeplink/compose?to=${recipient}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Outlook
+                </a>
+              </div>
             </nav>
           </div>
         </div>

@@ -108,26 +108,24 @@
       "role": "Software Engineering Intern",
       "location": "Athlone, Ireland",
       "dates": "January – July 2026",
-      "intro": "I developed a command-line AI agent to help replace legacy Java code across three departments. I built in two stages of human approval before changes could be written, keeping people in control of the process.",
-      "metrics": [
-        ["3.5 seconds", "Agent latency achieved"],
-        ["2 stages", "Human approval before writing changes"]
-      ],
-      "details": "I also helped migrate Gerrit workflows to GitLab CI using Docker, Helm and Gradle, and automated a reporting pipeline from Jira through SharePoint into Power BI.",
-      "learning": "Useful AI needs safeguards and dependable integration with the team’s existing workflow."
+      "learning": "Useful AI needs safeguards and dependable integration with the team’s existing workflow.",
+      "bullets": [
+        "Developed a CLI AI agent (kiro-cli) to replace legacy Java code across three departments, achieving 3.5-second latency at approximately 190 MB of memory, with two-stage human approval before writes.",
+        "Standardised pipeline architecture and accelerated deployment across multiple repositories by migrating legacy Gerrit workflows to GitLab CI using Docker, Helm and Gradle.",
+        "Automated the Trouble Report data pipeline, syncing live Jira data through SharePoint into Power BI dashboards to eliminate manual reporting and provide real-time visibility."
+      ]
     },
     {
       "company": "Jabil",
       "role": "MLOps Intern",
       "location": "Penang, Malaysia",
       "dates": "January – June 2025",
-      "intro": "I developed an OCR sticker extraction system to automate information extraction from labels and documents.",
-      "metrics": [
-        ["35%", "Improvement in processing accuracy"],
-        ["50%", "Reduction in manual validation time"]
-      ],
-      "details": "I integrated PaddleOCR with Amazon Bedrock for document processing and used Python to automate machine-data retrieval.",
-      "learning": "Evaluate AI through measurable results and how well it fits the people using it."
+      "learning": "Evaluate AI through measurable results and how well it fits the people using it.",
+      "bullets": [
+        "Developed an OCR-based sticker extraction system with a self-trained AI model, improving data processing accuracy by 35% and reducing manual validation time by 50%.",
+        "Achieved 98% text-extraction accuracy and 94% LLM response accuracy by integrating PaddleOCR and Amazon Bedrock pipelines using Claude and Qwen to process PDF documents.",
+        "Automated AXI machine-data retrieval and workflow updates using Python scripts, reducing manual labour time by 75%."
+      ]
     }
   ],
   "education": [
@@ -152,8 +150,11 @@
     {
       "title": "Huawei Intelligent World 2030 & IBM Bootcamp",
       "result": "Team Champion",
-      "details": "First place at both pitching sessions, competing among more than 20 teams.",
-      "dates": "June & September 2024 · Penang, Malaysia"
+      "dates": "June & September 2024",
+      "location": "Penang, Malaysia",
+      "bullets": [
+        "Secured first place at both the Huawei Intelligent World 2030 and IBM Bootcamp pitching sessions among more than 20 competing teams."
+      ]
     }
   ]
 }

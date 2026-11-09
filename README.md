@@ -6,7 +6,7 @@ A personal portfolio with five project case studies, internship experience at Er
 
 Built with **Next.js 15 (App Router), TypeScript, Tailwind CSS 4 and Framer Motion**. All routes are generated at build time for GitHub Pages. The page content is present in the exported HTML, and the animations respect reduced-motion preferences.
 
-The homepage includes scroll-linked project cards, a pausable technology marquee, resume-style experience and education, a skills panel and a full-width contact footer. Project cards use a regular vertical layout on phones, short screens and when reduced motion is enabled. Keyboard focus brings covered cards back into view.
+The homepage includes a personal portrait and CV link, scroll-linked project cards, a pausable colour technology marquee, CV-based achievement bullets, expandable learning reflections, a skills panel and a full-width contact footer. Project cards use a regular vertical layout on phones, short screens and when reduced motion is enabled. Keyboard focus brings covered cards back into view.
 
 ## Run locally
 
@@ -44,6 +44,6 @@ The project path is `/Portfolio`; it is configured in `next.config.ts`, `lib/sit
 
 [Ramzy’s portfolio](https://ramzy.framer.website/) is the visual reference for the typography, hero, sticky project stack, pastel cards, resume rows, skills panel and dark footer. Desktop measurements include a 1,016 px content width, 38 px section headings, 30 px project titles, 20 px project descriptions and 48 px buttons. The portfolio text and project illustrations describe my own work.
 
-[Hans’s portfolio](https://iecloudbird.github.io/portfolio/) informed the framework and the links between project descriptions and their source. Typography loads Satoshi from Fontshare, Hanken Grotesk from Google Fonts and Recoleta from the reference’s public Framer font URLs, with system fallbacks when those services are unavailable. Technology marks are from [Simple Icons](https://simpleicons.org/); their CC0 notice is included in `public/technologies/LICENSE.md`.
+[Hans’s portfolio](https://iecloudbird.github.io/portfolio/) informed the framework and the links between project descriptions and their source. Typography loads Satoshi from Fontshare, Hanken Grotesk from Google Fonts and Recoleta from the reference’s public Framer font URLs, with system fallbacks when those services are unavailable. Colour technology marks are from [Devicon](https://devicon.dev/), and the outline GitHub icon is from [Feather](https://feathericons.com/). Their MIT notices are included in `public/technologies/LICENSE.devicon` and `public/technologies/LICENSE.feather`.
 
 The redesign was checked in Chromium at widths from 320 to 1,920 px, including normal and reduced motion, project deep links, keyboard access to stacked cards, marquee controls and mobile navigation. `npm run check` also verifies all seven exported HTML pages and their local links and assets.

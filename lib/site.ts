@@ -19,7 +19,7 @@ export const media: {
   video: string;
   poster: string;
   captions: string;
-} = { portrait: "", video: "", poster: "", captions: "" };
+} = { portrait: "hayden-teh.jpg", video: "", poster: "", captions: "" };
 
 export const skills = [
   {

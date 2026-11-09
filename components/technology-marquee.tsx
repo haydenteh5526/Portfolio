@@ -6,12 +6,16 @@ import { asset } from "@/lib/site";
 
 const technologies = [
   ["python", "Python"],
-  ["react", "React"],
+  ["java", "Java"],
   ["typescript", "TypeScript"],
   ["javascript", "JavaScript"],
+  ["react", "React"],
+  ["tailwind", "Tailwind CSS"],
   ["docker", "Docker"],
   ["postgresql", "PostgreSQL"],
+  ["mysql", "MySQL"],
   ["git", "Git"],
+  ["gitlab", "GitLab"],
   ["fastapi", "FastAPI"],
 ];
 
@@ -45,14 +49,15 @@ export function TechnologyMarquee() {
               aria-hidden={copy === 1 ? true : undefined}
             >
               {technologies.map(([slug, name]) => (
-                <li key={slug}>
+                <li key={slug} title={name}>
                   <Image
                     src={asset(`technologies/${slug}.svg`)}
                     alt=""
-                    width={40}
-                    height={40}
+                    width={28}
+                    height={28}
+                    loading="eager"
                   />
-                  <span>{name}</span>
+                  <span className="sr-only">{name}</span>
                 </li>
               ))}
             </ul>

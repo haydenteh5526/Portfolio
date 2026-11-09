@@ -35,6 +35,14 @@ export default function Home() {
             >
               <LinkedInIcon /> LinkedIn
             </a>
+            <a
+              className="button button-light"
+              href={contact.cv}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View CV <ArrowUpRight />
+            </a>
           </div>
         </Reveal>
         <Reveal className="portrait">
@@ -58,7 +66,7 @@ export default function Home() {
 
       <section
         id="projects"
-        className="section"
+        className="section projects-section"
         aria-labelledby="projects-heading"
       >
         <h2 id="projects-heading" className="section-title">
@@ -69,15 +77,14 @@ export default function Home() {
             <ProjectCard key={project.slug} project={project} />
           ))}
         </ProjectStack>
-        <p className="mt-9 text-center text-base">
+        <p className="more-projects">
           More Projects on{" "}
           <a
-            className="text-link font-bold"
             href={`${contact.github}?tab=repositories`}
             target="_blank"
             rel="noopener noreferrer"
           >
-            GitHub <ArrowUpRight />
+            GitHub
           </a>
         </p>
       </section>
@@ -108,21 +115,14 @@ export default function Home() {
                 </div>
                 <div className="experience-body">
                   <ul>
-                    <li>{item.intro}</li>
-                    <li>
-                      {item.metrics.map(([value, label]) => (
-                        <span className="experience-result" key={value}>
-                          <strong>{value}</strong> — {label.toLowerCase()}.
-                        </span>
-                      ))}
-                    </li>
-                    <li>{item.details}</li>
+                    {item.bullets.map((bullet) => (
+                      <li key={bullet}>{bullet}</li>
+                    ))}
                   </ul>
-                  <p className="learning">
-                    <strong>What I learned</strong>
-                    {": "}
-                    {item.learning}
-                  </p>
+                  <details className="learning">
+                    <summary>What I learned</summary>
+                    <p>{item.learning}</p>
+                  </details>
                 </div>
               </article>
             </Reveal>
@@ -152,10 +152,10 @@ export default function Home() {
                     <p>{item.dates}</p>
                   </div>
                 </div>
-                <div>
-                  <p className="font-bold">{item.result}</p>
-                  {item.note ? <p>{item.note}</p> : null}
-                </div>
+                <ul className="education-highlights">
+                  <li className="font-bold">{item.result}</li>
+                  {item.note ? <li>{item.note}</li> : null}
+                </ul>
               </article>
             </Reveal>
           ))}
@@ -166,18 +166,31 @@ export default function Home() {
         <h2 id="awards-heading" className="section-title">
           Awards &amp; Achievements
         </h2>
-        {portfolio.awards.map((item) => (
-          <Reveal key={item.title}>
-            <article className="award-card">
-              <p className="text-sm font-bold uppercase tracking-widest text-ink">
-                {item.result}
-              </p>
-              <h3>{item.title}</h3>
-              <p>{item.details}</p>
-              <p className="mt-5 text-sm">{item.dates}</p>
-            </article>
-          </Reveal>
-        ))}
+        <div className="resume-list">
+          {portfolio.awards.map((item) => (
+            <Reveal key={item.title}>
+              <article className="award-card">
+                <div className="resume-heading">
+                  <div>
+                    <h3>{item.title}</h3>
+                    <p className="resume-role">{item.result}</p>
+                  </div>
+                  <div className="resume-meta">
+                    <p className="resume-location">{item.location}</p>
+                    <p>{item.dates}</p>
+                  </div>
+                </div>
+                <div className="experience-body">
+                  <ul>
+                    {item.bullets.map((bullet) => (
+                      <li key={bullet}>{bullet}</li>
+                    ))}
+                  </ul>
+                </div>
+              </article>
+            </Reveal>
+          ))}
+        </div>
       </section>
 
       <section id="skills" className="section" aria-labelledby="skills-heading">

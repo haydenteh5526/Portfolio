@@ -44,6 +44,7 @@
   }
   a:focus-visible,
   button:focus-visible,
+  summary:focus-visible,
   video:focus-visible {
     outline: 3px solid #0078aa;
     outline-offset: 5px;
@@ -234,6 +235,9 @@
     border-radius: 40px;
     background: #e0e0d6;
   }
+  .portrait img {
+    object-position: 50% 40%;
+  }
   .monogram {
     display: flex;
     height: 100%;
@@ -354,21 +358,40 @@
     background: #d1ebfa;
   }
   .technology-section {
-    padding: 8px 0 64px;
+    padding: 64px 0 83px;
+  }
+  .section.projects-section {
+    padding-bottom: 0;
+  }
+  .more-projects {
+    margin-top: 40px;
+    text-align: center;
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+  }
+  .more-projects a {
+    color: #0099ff;
+  }
+  .more-projects a:hover {
+    text-decoration: underline;
   }
   .technology-heading {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     gap: 16px;
     margin-bottom: 32px;
   }
   .technology-heading h2 {
-    font-size: 20px;
+    font-size: 38px;
     font-weight: 400;
-    text-align: center;
+    line-height: 1.2;
+    letter-spacing: -0.7px;
   }
   .marquee-toggle {
+    flex-shrink: 0;
     height: 28px;
     width: 28px;
     border-radius: 50%;
@@ -379,6 +402,9 @@
     background: #eaeaea;
   }
   .technology-window {
+    display: flex;
+    align-items: center;
+    height: 190px;
     overflow: hidden;
     mask-image: linear-gradient(
       to right,
@@ -391,26 +417,25 @@
   .technology-track {
     display: flex;
     width: max-content;
-    animation: technology-scroll 32s linear infinite;
+    animation: technology-scroll 40s linear infinite;
   }
   .technology-group {
     display: flex;
     align-items: center;
-    gap: 54px;
-    padding-right: 54px;
+    gap: 0;
   }
   .technology-group li {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 10px;
-    min-width: 80px;
-    font-family: var(--font-ui);
-    font-size: 15px;
-    color: #555;
+    justify-content: center;
+    flex: 0 0 100px;
+    width: 100px;
+    height: 40px;
   }
   .technology-group img {
-    opacity: 0.65;
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
   }
   .technology-window:hover .technology-track,
   .technology-window[data-paused="true"] .technology-track {
@@ -420,7 +445,8 @@
     margin-top: 36px;
   }
   .experience-card,
-  .education-card {
+  .education-card,
+  .award-card {
     padding: 0 0 36px;
     border-bottom: 1px solid var(--color-line);
   }
@@ -468,11 +494,17 @@
     padding-left: 0;
     margin-bottom: 10px;
   }
-  .experience-result + .experience-result {
-    margin-left: 8px;
-  }
   .learning {
     margin-top: 20px;
+    font-size: 16px;
+  }
+  .learning summary {
+    cursor: pointer;
+    width: fit-content;
+    color: #555;
+  }
+  .learning p {
+    margin-top: 12px;
   }
   .education-card h3 {
     font-family: var(--font-ui);
@@ -484,20 +516,12 @@
   .education-card .resume-heading {
     grid-template-columns: minmax(0, 1fr) 300px;
   }
-  .education-card > div:last-child p + p {
-    margin-top: 24px;
+  .education-highlights {
+    padding-left: 25px;
+    list-style: disc;
   }
-  .award-card {
-    padding: 32px;
-    border: 1px solid #e3e2df;
-    border-radius: 20px;
-    background: #fff8;
-  }
-  .award-card h3 {
-    margin: 10px 0 16px;
-    font-size: 28px;
-    font-weight: 400;
-    letter-spacing: -0.5px;
+  .education-highlights li + li {
+    margin-top: 10px;
   }
   .skill-tags {
     display: flex;
@@ -784,9 +808,10 @@
     line-height: 1.4;
   }
   .hero .actions {
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: center;
     margin-top: 24px;
-    gap: 20px;
+    gap: 12px;
   }
   .portrait {
     justify-self: center;
@@ -835,10 +860,21 @@
     aspect-ratio: 1.29;
   }
   .technology-section {
-    padding-inline: 16px;
+    padding: 48px 24px 64px;
   }
   .technology-heading h2 {
-    font-size: 18px;
+    font-size: 30px;
+    letter-spacing: -0.5px;
+  }
+  .technology-window {
+    height: 130px;
+  }
+  .technology-group li {
+    flex-basis: 80px;
+    width: 80px;
+  }
+  .more-projects {
+    font-size: 22px;
   }
   .resume-list {
     padding-inline: 16px;
@@ -866,12 +902,6 @@
   }
   .education-card h3 {
     font-size: 28px;
-  }
-  .award-card {
-    padding: 28px;
-  }
-  .award-card h3 {
-    font-size: 25px;
   }
   .skill-tags {
     padding: 32px 20px;
@@ -949,7 +979,7 @@
     transform: none !important;
   }
   .technology-track {
-    width: auto;
+    width: 100%;
   }
   .technology-group {
     flex-wrap: wrap;
@@ -964,6 +994,9 @@
   }
   .technology-window {
     mask-image: none;
+    height: auto;
+    min-height: 130px;
+    overflow: visible;
   }
 }
 @media print {

@@ -76,7 +76,6 @@
 }
 @layer base {
   html {
-    background-color: var(--footer-background);
     scroll-behavior: smooth;
     scroll-padding-top: calc(var(--header-offset) + 28px);
   }

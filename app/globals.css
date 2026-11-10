@@ -356,10 +356,7 @@
   }
   .project-cover-composition {
     position: absolute;
-    inset-block: 0;
-    left: 50%;
-    width: min(100%, 154cqh);
-    translate: -50% 0;
+    inset: 0;
     transition: scale 0.5s cubic-bezier(0.22, 1, 0.36, 1);
   }
   .project-cover-screen {
@@ -379,64 +376,77 @@
   }
   .project-cover[data-layout="angled"] {
     background:
-      radial-gradient(ellipse at 12% 15%, #f2fff5, transparent 64%),
-      linear-gradient(140deg, #c9ede2, #8ccebd);
+      linear-gradient(150deg, #d6f6f3, #81c6bc);
+  }
+  [data-layout="angled"] .project-cover-composition {
+    inset: -12% -11%;
+    transform: rotate(-25deg) skewX(15deg);
   }
   [data-layout="angled"] .project-cover-screen {
+    width: 72%;
     aspect-ratio: 1200 / 825;
+    border: 2px solid #e4f5f2;
+    border-radius: 13px;
+    box-shadow: 0 14px 26px #163e3a48;
   }
   [data-layout="angled"] .project-cover-primary {
-    width: 70%;
-    top: 18.5%;
-    left: 7%;
-    transform: rotate(-7deg);
+    top: 27%;
+    left: 13%;
   }
   [data-layout="angled"] .project-cover-secondary {
-    width: 55%;
-    top: 12%;
-    right: 5%;
-    transform: rotate(6deg);
+    bottom: calc(73% + 12px);
+    left: 13%;
+  }
+  [data-layout="angled"] .project-cover-edge {
+    top: 27%;
+    right: calc(87% + 12px);
   }
   .project-cover[data-layout="phones"] {
     background:
-      radial-gradient(ellipse at 50% 48%, #faf1d3 0 22%, transparent 64%),
-      linear-gradient(145deg, #dfdec0, #a7b38c);
+      radial-gradient(ellipse at 26% 15%, #d2cb91, transparent 68%),
+      linear-gradient(140deg, #88916b, #343e2e);
   }
   [data-layout="phones"] .project-cover-screen {
     aspect-ratio: 860 / 1620;
-    top: 50%;
-    left: 50%;
-    border: 3px solid #252720;
-    border-radius: 18px;
-    box-shadow: 0 18px 30px #34402a40, 0 2px 4px #0004;
+    border: 4px solid #292a24;
+    border-radius: clamp(13px, 5cqw, 28px);
+    box-shadow: 0 16px 34px #19201890, 0 0 0 1px #eee1b66b;
   }
   [data-layout="phones"] .project-cover-primary {
-    height: min(84%, 76cqw);
-    transform: translate(-105%, -50%) rotate(-7deg);
+    height: min(115%, 105cqw);
+    top: 0;
+    left: 34%;
+    transform: translateX(-50%) rotate(-9deg);
   }
   [data-layout="phones"] .project-cover-secondary {
-    height: min(74%, 67cqw);
-    transform: translate(8%, -45%) rotate(9deg);
+    height: min(106%, 98cqw);
+    top: 13%;
+    left: 68%;
+    transform: translateX(-50%) rotate(11deg);
   }
   .project-cover[data-layout="inset"] {
     background:
-      radial-gradient(ellipse at 90% 90%, #8064af, transparent 66%),
-      linear-gradient(145deg, #211831, #46365f);
+      radial-gradient(ellipse at 86% 18%, #a27dea, transparent 58%),
+      linear-gradient(140deg, #3a2858, #160d29);
   }
   [data-layout="inset"] .project-cover-primary {
-    width: 82%;
-    aspect-ratio: 1160 / 740;
-    top: 15%;
-    left: 7%;
+    width: 100%;
+    height: 105%;
+    top: 8%;
+    left: -7%;
     border-color: #a393bd66;
+    box-shadow: 0 0 24px #0e081e8c;
+  }
+  [data-layout="inset"] .project-cover-primary img {
+    object-position: center 32%;
   }
   [data-layout="inset"] .project-cover-secondary {
     z-index: 1;
-    width: 35%;
-    aspect-ratio: 2.1;
-    right: 4%;
+    width: min(42%, 64cqh);
+    aspect-ratio: 2.35;
+    right: -6%;
     top: 4%;
-    border-color: #b2a0ce;
+    border-color: #b2a0ceaa;
     box-shadow: 0 10px 25px #0e081e80;
   }
   [data-layout="inset"] .project-cover-secondary img {
@@ -444,33 +454,35 @@
   }
   .project-cover[data-layout="workspace"] {
     background:
-      linear-gradient(90deg, transparent 56%, #ffffff3d 56%),
-      linear-gradient(145deg, #efe8f0, #d3bfd0);
+      radial-gradient(ellipse at 7% 5%, #f9edf4, transparent 62%),
+      linear-gradient(145deg, #e2c6df, #ab8caa);
   }
   [data-layout="workspace"] .project-cover-primary {
-    width: 55%;
-    aspect-ratio: 1200 / 1010;
-    left: 5%;
-    top: 50%;
-    translate: 0 -50%;
-    box-shadow: 0 14px 28px #63465e30;
+    width: min(83%, 137cqh);
+    height: 99%;
+    right: -2%;
+    top: 10%;
+    box-shadow: 0 12px 28px #56385060;
   }
   [data-layout="workspace"] .project-cover-secondary {
-    width: 34%;
-    aspect-ratio: 840 / 595;
-    right: 4%;
-    top: 50%;
-    translate: 0 -33%;
+    width: 80%;
+    height: 90%;
+    left: -33%;
+    top: 18%;
+    transform: rotate(-6deg);
     border-radius: 7px;
-    box-shadow: 0 8px 18px #63465e26;
+    box-shadow: 0 8px 18px #56385044;
   }
   .project-cover[data-layout="broadcast"] {
     background:
-      radial-gradient(ellipse at 95% 5%, #55232b, transparent 58%),
+      linear-gradient(142deg, #72262f, #15151e 62%),
       #15151e;
   }
   [data-layout="broadcast"] .project-cover-composition {
-    width: min(91%, 137cqh);
+    inset: 50% auto auto 50%;
+    width: min(100%, 162cqh);
+    aspect-ratio: 1.62;
+    translate: -50% -50%;
   }
   [data-layout="broadcast"] .project-cover-screen {
     width: 100%;
@@ -482,16 +494,15 @@
   }
   /* Frame the race banner and tyre chart within the dashboard captures. */
   [data-layout="broadcast"] .project-cover-secondary {
-    top: 7%;
+    top: 0;
     aspect-ratio: 896 / 205;
-    border-radius: 5px;
   }
   [data-layout="broadcast"] .project-cover-secondary img {
     height: auto;
     transform: translateY(-14.5%);
   }
   [data-layout="broadcast"] .project-cover-primary {
-    bottom: 7%;
+    bottom: 0;
     aspect-ratio: 1028 / 405;
   }
   [data-layout="broadcast"] .project-cover-primary img {

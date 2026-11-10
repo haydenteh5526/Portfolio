@@ -30,6 +30,16 @@ export function ProjectCover({
             priority={featured}
           />
         </div>
+        {screenshot.layout === "angled" && (
+          <div className="project-cover-screen project-cover-edge" aria-hidden="true">
+            <Image
+              src={asset(`projects/${secondary.file}`)}
+              width={secondary.width}
+              height={secondary.height}
+              alt=""
+            />
+          </div>
+        )}
       </div>
     </div>
   );

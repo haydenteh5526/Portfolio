@@ -9,8 +9,13 @@
       "name": "DocVault",
       "category": "Final-year project",
       "tone": "cyan",
-      "art": "docvault.svg",
-      "artAlt": "Illustration of DocVault’s document extraction and hybrid search workflow",
+      "screenshot": {
+        "file": "docvault-screenshot.webp",
+        "width": 1200,
+        "height": 825,
+        "alt": "DocVault shows the amount due, due date and billing period extracted from a sample electricity bill.",
+        "caption": "DocVault’s bill review screen with a synthetic electricity bill."
+      },
       "summary": "Digitise manuals, warranties and guides, then find the information you need with keyword and meaning-based search.",
       "stack": [
         "FastAPI",
@@ -34,8 +39,13 @@
       "name": "VibeCam",
       "category": "Offline mobile experience",
       "tone": "green",
-      "art": "vibecam.svg",
-      "artAlt": "Project illustration of VibeCam’s six camera-inspired looks and retained original",
+      "screenshot": {
+        "file": "vibecam-screenshot.webp",
+        "width": 860,
+        "height": 1620,
+        "alt": "VibeCam shows an imported photo and camera looks in the photo editor.",
+        "caption": "VibeCam’s photo editor in the web preview, using a sample photo."
+      },
       "summary": "An offline pocket-camera simulator with six compact-camera-inspired looks for photos and short videos. Import, compare and restyle while keeping the original.",
       "stack": ["React Native", "Expo", "TypeScript", "Local media processing"],
       "status": "In development · Physical iPhone testing pending",
@@ -52,8 +62,13 @@
       "name": "Exoplanet AI Hunter",
       "category": "NASA Space Apps Challenge 2025",
       "tone": "lavender",
-      "art": "exoplanet.svg",
-      "artAlt": "Illustration of a planetary transit and observation classification",
+      "screenshot": {
+        "file": "exoplanet-screenshot.webp",
+        "width": 1160,
+        "height": 790,
+        "alt": "The Exoplanet AI Hunter home screen introduces the classifier and shows a button to start classification.",
+        "caption": "Exoplanet AI Hunter’s web app for the NASA Space Apps Challenge."
+      },
       "summary": "A machine-learning classification project using Kepler, K2 and TESS observations to support exoplanet follow-up prioritisation.",
       "stack": ["Python", "Flask", "scikit-learn", "pandas"],
       "status": "Challenge classification project",
@@ -70,8 +85,13 @@
       "name": "CourseXcel",
       "category": "Team Leader · September 2024 – December 2024",
       "tone": "peach",
-      "art": "coursexcel.svg",
-      "artAlt": "Project illustration connecting subject assignments, lecturer claims and departmental reports",
+      "screenshot": {
+        "file": "coursexcel-screenshot.webp",
+        "width": 1200,
+        "height": 1010,
+        "alt": "CourseXcel’s admin dashboard shows charts for subject assignments and lecturer claims.",
+        "caption": "CourseXcel’s reporting dashboard with fictional departments and lecturer records."
+      },
       "summary": "Subject assignment, lecturer claims and departmental reporting in one application, with distinct permissions and workflows for each role.",
       "stack": ["Python", "Flask", "JavaScript", "MySQL"],
       "status": "Application project · Source available",
@@ -88,8 +108,13 @@
       "name": "F1 Strategy Visualisation",
       "category": "Group data visualisation project",
       "tone": "blue",
-      "art": "f1.svg",
-      "artAlt": "Illustration of race stints and lap-time comparison, rather than a measured race chart",
+      "screenshot": {
+        "file": "f1-screenshot.webp",
+        "width": 1028,
+        "height": 888,
+        "alt": "The F1 Strategy Visualisation dashboard compares tyre stints for six drivers at the Austrian Grand Prix.",
+        "caption": "Tyre strategy view in the interactive Austrian Grand Prix dashboard."
+      },
       "summary": "Exploring race pace, tyre age and pit-stop context through an interactive story. I am Head Developer in the group project.",
       "stack": ["Python", "Streamlit", "FastF1", "Data visualisation"],
       "status": "Story prototype · Audience feedback in progress",

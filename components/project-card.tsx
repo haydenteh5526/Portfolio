@@ -30,14 +30,14 @@ export function ProjectCard({ project }: { project: Project }) {
           aria-hidden="true"
         >
           <Image
-            src={asset(`projects/${project.art}`)}
-            width={520}
-            height={360}
-            alt={project.artAlt}
-            className="h-full w-full object-cover"
+            src={asset(`projects/${project.screenshot.file}`)}
+            width={project.screenshot.width}
+            height={project.screenshot.height}
+            alt={project.screenshot.alt}
+            className="h-full w-full object-contain"
           />
         </Link>
-        <figcaption className="sr-only">Project illustration</figcaption>
+        <figcaption className="sr-only">{project.screenshot.caption}</figcaption>
       </figure>
     </article>
   );

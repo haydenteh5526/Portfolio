@@ -66,14 +66,14 @@ export default async function ProjectPage({ params }: Props) {
       </header>
       <figure className={`detail-art tone-${project.tone}`}>
         <Image
-          src={asset(`projects/${project.art}`)}
-          alt={project.artAlt}
-          width={520}
-          height={360}
+          src={asset(`projects/${project.screenshot.file}`)}
+          alt={project.screenshot.alt}
+          width={project.screenshot.width}
+          height={project.screenshot.height}
           priority
-          className="mx-auto h-auto w-full max-w-[740px] rounded-3xl"
+          className="mx-auto h-auto max-h-[680px] w-auto max-w-full rounded-2xl"
         />
-        <figcaption>Project illustration</figcaption>
+        <figcaption>{project.screenshot.caption}</figcaption>
       </figure>
       <div className="detail-content">
         <div className="detail-copy">

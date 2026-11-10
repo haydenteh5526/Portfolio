@@ -22,11 +22,11 @@
       ],
       "status": "Local web and backend MVP implemented",
       "repository": "https://github.com/haydenteh5526/DocVault",
-      "evidence": "https://github.com/haydenteh5526/DocVault/blob/main/specs/IMPLEMENTATION_STATUS.md",
+      "evidence": "https://github.com/haydenteh5526/DocVault/blob/main/specs/Repo_Current_State.md",
       "purpose": "DocVault is my final-year project: a document management app for digitising physical manuals, warranties and guides and finding information within them. It connects document storage and text extraction with search and document-grounded Q&A.",
       "approach": "A React and TypeScript client connects to a FastAPI backend. PostgreSQL full-text search and pgvector provide keyword and semantic retrieval in the same database. Redis and an ARQ worker handle document processing in the background, with an inline fallback when the queue is unavailable.",
       "decision": "Combining relational data and both search methods in one database keeps the architecture simpler. Background processing lets uploads return while text extraction and indexing continue.",
-      "evidenceText": "The repository documents the local runtime, automated checks and a full-stack smoke test. The implementation-status document separates working features from evaluation and deployment work still to be completed.",
+      "evidenceText": "The repository’s current-state report documents the local runtime, automated checks and a bill-review rehearsal. It also identifies the remaining evaluation and deployment work.",
       "limitations": "Formal evaluation, physical-device validation and evidence of a live AWS deployment remain in progress. Generated AI answers were not verified in the documented smoke run because no live answer-provider key was active."
     },
     {

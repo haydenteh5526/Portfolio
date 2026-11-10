@@ -10,6 +10,7 @@
       "category": "Final-year project",
       "tone": "cyan",
       "screenshot": {
+        "layout": "angled",
         "file": "docvault-screenshot.webp",
         "width": 1200,
         "height": 825,
@@ -45,6 +46,7 @@
       "category": "Offline mobile experience",
       "tone": "green",
       "screenshot": {
+        "layout": "phones",
         "file": "vibecam-screenshot.webp",
         "width": 860,
         "height": 1620,
@@ -73,6 +75,7 @@
       "category": "NASA Space Apps Challenge 2025",
       "tone": "lavender",
       "screenshot": {
+        "layout": "inset",
         "file": "exoplanet-screenshot.webp",
         "width": 1160,
         "height": 790,
@@ -101,6 +104,7 @@
       "category": "Team Leader · September 2024 – December 2024",
       "tone": "peach",
       "screenshot": {
+        "layout": "strips",
         "file": "coursexcel-screenshot.webp",
         "width": 1200,
         "height": 1010,
@@ -129,6 +133,7 @@
       "category": "Group data visualisation project",
       "tone": "blue",
       "screenshot": {
+        "layout": "broadcast",
         "file": "f1-screenshot.webp",
         "width": 1028,
         "height": 888,

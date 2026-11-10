@@ -29,7 +29,7 @@ export function ProjectCard({ project }: { project: Project }) {
         <Link
           href={`/projects/${project.slug}/`}
           className="project-preview"
-          data-layout={screenshot.height > screenshot.width ? "phone" : "web"}
+          data-layout={screenshot.layout}
           tabIndex={-1}
           aria-hidden="true"
         >

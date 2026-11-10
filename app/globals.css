@@ -336,9 +336,6 @@
     align-self: stretch;
   }
   .project-preview {
-    --preview-tilt: -9deg;
-    --preview-light: #a7e8e0;
-    --preview-dark: #288b88;
     position: relative;
     display: block;
     height: 100%;
@@ -346,7 +343,6 @@
     overflow: hidden;
     isolation: isolate;
     border-radius: 24px;
-    background: linear-gradient(135deg, var(--preview-light), var(--preview-dark));
     box-shadow:
       0 8px 16px #1e151510,
       0 1px 3px #1e151510;
@@ -363,12 +359,10 @@
     position: absolute;
     display: block;
     overflow: hidden;
-    aspect-ratio: 1.58;
     border: 1px solid #ffffff70;
     border-radius: 11px;
     background: #15161a;
     box-shadow: 0 14px 34px #12162155, 0 2px 6px #12162135;
-    transform: rotate(var(--preview-tilt));
   }
   .project-preview-screen img {
     display: block;
@@ -377,52 +371,106 @@
     object-fit: cover;
     object-position: center top;
   }
-  .project-preview-primary {
-    width: 87%;
-    top: 24%;
+  .project-preview[data-layout="angled"] {
+    background: linear-gradient(135deg, #baf2ea, #288b88);
+  }
+  [data-layout="angled"] .project-preview-screen {
+    aspect-ratio: 1.58;
+    transform: rotate(-13deg);
+  }
+  [data-layout="angled"] .project-preview-primary {
+    width: 86%;
+    top: 30%;
     left: 8%;
   }
-  .project-preview-secondary {
-    width: 70%;
-    top: -16%;
-    left: 43%;
+  [data-layout="angled"] .project-preview-secondary {
+    width: 66%;
+    top: -13%;
+    left: 45%;
   }
-  .tone-green .project-preview {
-    --preview-light: #e9e8bd;
-    --preview-dark: #788c60;
+  .project-preview[data-layout="phones"] {
+    background: radial-gradient(ellipse at 34% 24%, #f6ebc6, #a4ad78 58%, #697e56);
   }
-  .tone-lavender .project-preview {
-    --preview-light: #8673bf;
-    --preview-dark: #322458;
-  }
-  .tone-peach .project-preview {
-    --preview-tilt: -5deg;
-    --preview-light: #efe1e8;
-    --preview-dark: #a8829e;
-  }
-  .tone-blue .project-preview {
-    --preview-tilt: -7deg;
-    --preview-light: #754a52;
-    --preview-dark: #242535;
-  }
-  .tone-blue .project-preview-primary img {
-    object-position: center 85%;
-  }
-  .project-preview[data-layout="phone"] .project-preview-screen {
-    width: 35%;
+  [data-layout="phones"] .project-preview-screen {
     aspect-ratio: 860 / 1620;
-    border: 2px solid #252723;
+    border: 3px solid #252723;
     border-radius: 16px;
   }
-  .project-preview[data-layout="phone"] .project-preview-primary {
-    top: 4%;
-    left: 21%;
-    transform: rotate(-10deg);
+  [data-layout="phones"] .project-preview-primary {
+    width: 36%;
+    top: 6%;
+    left: 18%;
+    transform: rotate(-7deg);
   }
-  .project-preview[data-layout="phone"] .project-preview-secondary {
-    top: 11%;
-    left: 53%;
-    transform: rotate(10deg);
+  [data-layout="phones"] .project-preview-secondary {
+    width: 33%;
+    top: 13%;
+    left: 52%;
+    transform: rotate(12deg);
+  }
+  .project-preview[data-layout="inset"] {
+    background: radial-gradient(ellipse at 92% 90%, #8c78bc, #403060 59%, #211a38);
+  }
+  [data-layout="inset"] .project-preview-primary {
+    width: 84%;
+    height: 73%;
+    top: 9%;
+    left: 7%;
+  }
+  [data-layout="inset"] .project-preview-secondary {
+    z-index: 1;
+    width: 48%;
+    height: 36%;
+    right: 5%;
+    bottom: 6%;
+    border-color: #c9b8e4;
+  }
+  .project-preview[data-layout="strips"] {
+    background: linear-gradient(150deg, #f4eaf1, #bea8c3);
+  }
+  [data-layout="strips"] .project-preview-screen {
+    width: 86%;
+    height: 39%;
+    left: 7%;
+    border-radius: 8px;
+    box-shadow: 0 5px 14px #4b324726;
+  }
+  [data-layout="strips"] .project-preview-secondary {
+    top: 8%;
+  }
+  [data-layout="strips"] .project-preview-secondary img {
+    object-position: center 36%;
+  }
+  [data-layout="strips"] .project-preview-primary {
+    bottom: 8%;
+  }
+  [data-layout="strips"] .project-preview-primary img {
+    object-position: center 23%;
+  }
+  .project-preview[data-layout="broadcast"] {
+    background: #13141a;
+  }
+  [data-layout="broadcast"] .project-preview-screen {
+    width: 100%;
+    left: 0;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  [data-layout="broadcast"] .project-preview-secondary {
+    top: 0;
+    height: 36%;
+    border-bottom: 2px solid #df3741;
+  }
+  [data-layout="broadcast"] .project-preview-secondary img {
+    object-position: center 26%;
+  }
+  [data-layout="broadcast"] .project-preview-primary {
+    bottom: 0;
+    height: 64%;
+  }
+  [data-layout="broadcast"] .project-preview-primary img {
+    object-position: center 81%;
   }
   .detail-art figcaption {
     margin-top: 12px;

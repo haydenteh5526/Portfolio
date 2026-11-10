@@ -4,6 +4,8 @@ import { asset, type Project } from "@/lib/site";
 import { Button } from "@/components/ui/button";
 
 export function ProjectCard({ project }: { project: Project }) {
+  const { screenshot } = project;
+
   return (
     <article
       className={`project-card tone-${project.tone}`}
@@ -26,18 +28,31 @@ export function ProjectCard({ project }: { project: Project }) {
       <figure className="project-visual">
         <Link
           href={`/projects/${project.slug}/`}
+          className="project-preview"
+          data-layout={screenshot.height > screenshot.width ? "phone" : "web"}
           tabIndex={-1}
           aria-hidden="true"
         >
-          <Image
-            src={asset(`projects/${project.screenshot.file}`)}
-            width={project.screenshot.width}
-            height={project.screenshot.height}
-            alt={project.screenshot.alt}
-            className="h-full w-full object-contain"
-          />
+          <span className="project-preview-composition">
+            <span className="project-preview-screen project-preview-secondary">
+              <Image
+                src={asset(`projects/${screenshot.secondary.file}`)}
+                width={screenshot.secondary.width}
+                height={screenshot.secondary.height}
+                alt=""
+              />
+            </span>
+            <span className="project-preview-screen project-preview-primary">
+              <Image
+                src={asset(`projects/${screenshot.file}`)}
+                width={screenshot.width}
+                height={screenshot.height}
+                alt=""
+              />
+            </span>
+          </span>
         </Link>
-        <figcaption className="sr-only">{project.screenshot.caption}</figcaption>
+        <figcaption className="sr-only">{screenshot.caption}</figcaption>
       </figure>
     </article>
   );

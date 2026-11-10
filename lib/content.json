@@ -19,7 +19,8 @@
         "secondary": {
           "file": "docvault-ask.webp",
           "width": 800,
-          "height": 550
+          "height": 550,
+          "alt": "The same sample bill open on DocVault’s Ask AI tab."
         }
       },
       "summary": "Digitise manuals, warranties and guides, then find the information you need with keyword and meaning-based search.",
@@ -55,7 +56,8 @@
         "secondary": {
           "file": "vibecam-compare.webp",
           "width": 430,
-          "height": 810
+          "height": 810,
+          "alt": "VibeCam’s camera collection previews the GTX III look."
         }
       },
       "summary": "An offline pocket-camera simulator with six compact-camera-inspired looks for photos and short videos. Import, compare and restyle while keeping the original.",
@@ -84,7 +86,8 @@
         "secondary": {
           "file": "exoplanet-result.webp",
           "width": 800,
-          "height": 550
+          "height": 550,
+          "alt": "The classification results screen shows the candidate status and model confidence."
         }
       },
       "summary": "A machine-learning classification project using Kepler, K2 and TESS observations to support exoplanet follow-up prioritisation.",
@@ -104,7 +107,7 @@
       "category": "Team Leader · September 2024 – December 2024",
       "tone": "peach",
       "screenshot": {
-        "layout": "strips",
+        "layout": "workspace",
         "file": "coursexcel-screenshot.webp",
         "width": 1200,
         "height": 1010,
@@ -113,7 +116,8 @@
         "secondary": {
           "file": "coursexcel-admin.webp",
           "width": 840,
-          "height": 595
+          "height": 595,
+          "alt": "CourseXcel’s admin workspace includes options to upload course and lecturer data and generate reports."
         }
       },
       "summary": "Subject assignment, lecturer claims and departmental reporting in one application, with distinct permissions and workflows for each role.",
@@ -142,7 +146,8 @@
         "secondary": {
           "file": "f1-overview.webp",
           "width": 896,
-          "height": 595
+          "height": 595,
+          "alt": "The dashboard banner for the 2026 Austrian Grand Prix at the Red Bull Ring."
         }
       },
       "summary": "Exploring race pace, tyre age and pit-stop context through an interactive story. I am Head Developer in the group project.",

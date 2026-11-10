@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowUpRight } from "@/components/icons";
+import { ProjectCover } from "@/components/project-cover";
 import { asset, portfolio } from "@/lib/site";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -64,16 +64,19 @@ export default async function ProjectPage({ params }: Props) {
           </a>
         </div>
       </header>
-      <figure className={`detail-art tone-${project.tone}`}>
-        <Image
-          src={asset(`projects/${project.screenshot.file}`)}
-          alt={project.screenshot.alt}
-          width={project.screenshot.width}
-          height={project.screenshot.height}
-          priority
-          className="mx-auto h-auto max-h-[680px] w-auto max-w-full rounded-2xl"
-        />
-        <figcaption>{project.screenshot.caption}</figcaption>
+      <figure className="detail-art">
+        <ProjectCover screenshot={project.screenshot} featured />
+        <figcaption>
+          <span>{project.screenshot.caption}</span>
+          <a
+            className="text-link"
+            href={asset(`projects/${project.screenshot.file}`)}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View full screenshot <ArrowUpRight />
+          </a>
+        </figcaption>
       </figure>
       <div className="detail-content">
         <div className="detail-copy">

@@ -1,6 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
-import { asset, type Project } from "@/lib/site";
+import { ProjectCover } from "@/components/project-cover";
+import type { Project } from "@/lib/site";
 import { Button } from "@/components/ui/button";
 
 export function ProjectCard({ project }: { project: Project }) {
@@ -29,28 +29,10 @@ export function ProjectCard({ project }: { project: Project }) {
         <Link
           href={`/projects/${project.slug}/`}
           className="project-preview"
-          data-layout={screenshot.layout}
           tabIndex={-1}
           aria-hidden="true"
         >
-          <span className="project-preview-composition">
-            <span className="project-preview-screen project-preview-secondary">
-              <Image
-                src={asset(`projects/${screenshot.secondary.file}`)}
-                width={screenshot.secondary.width}
-                height={screenshot.secondary.height}
-                alt=""
-              />
-            </span>
-            <span className="project-preview-screen project-preview-primary">
-              <Image
-                src={asset(`projects/${screenshot.file}`)}
-                width={screenshot.width}
-                height={screenshot.height}
-                alt=""
-              />
-            </span>
-          </span>
+          <ProjectCover screenshot={screenshot} />
         </Link>
         <figcaption className="sr-only">{screenshot.caption}</figcaption>
       </figure>

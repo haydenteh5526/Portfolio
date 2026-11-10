@@ -340,142 +340,184 @@
     display: block;
     height: 100%;
     min-height: 301px;
-    overflow: hidden;
-    isolation: isolate;
     border-radius: 24px;
-    box-shadow:
-      0 8px 16px #1e151510,
-      0 1px 3px #1e151510;
+    box-shadow: 0 8px 20px #1e151514;
   }
-  .project-preview-composition {
+  .project-preview > .project-cover {
     position: absolute;
     inset: 0;
-    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
   }
-  .project-preview:hover .project-preview-composition {
-    transform: scale(1.035);
+  .project-cover {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    container-type: size;
+    border-radius: inherit;
   }
-  .project-preview-screen {
+  .project-cover-composition {
     position: absolute;
-    display: block;
+    inset-block: 0;
+    left: 50%;
+    width: min(100%, 154cqh);
+    translate: -50% 0;
+    transition: scale 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .project-cover-screen {
+    position: absolute;
     overflow: hidden;
     border: 1px solid #ffffff70;
-    border-radius: 11px;
+    border-radius: 10px;
     background: #15161a;
-    box-shadow: 0 14px 34px #12162155, 0 2px 6px #12162135;
+    box-shadow: 0 16px 30px #142b2b26, 0 3px 8px #142b2b1a;
   }
-  .project-preview-screen img {
+  .project-cover-screen img {
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center top;
   }
-  .project-preview[data-layout="angled"] {
-    background: linear-gradient(135deg, #baf2ea, #288b88);
+  .project-cover[data-layout="angled"] {
+    background:
+      radial-gradient(ellipse at 12% 15%, #f2fff5, transparent 64%),
+      linear-gradient(140deg, #c9ede2, #8ccebd);
   }
-  [data-layout="angled"] .project-preview-screen {
-    aspect-ratio: 1.58;
-    transform: rotate(-13deg);
+  [data-layout="angled"] .project-cover-screen {
+    aspect-ratio: 1200 / 825;
   }
-  [data-layout="angled"] .project-preview-primary {
-    width: 86%;
-    top: 30%;
-    left: 8%;
-  }
-  [data-layout="angled"] .project-preview-secondary {
-    width: 66%;
-    top: -13%;
-    left: 45%;
-  }
-  .project-preview[data-layout="phones"] {
-    background: radial-gradient(ellipse at 34% 24%, #f6ebc6, #a4ad78 58%, #697e56);
-  }
-  [data-layout="phones"] .project-preview-screen {
-    aspect-ratio: 860 / 1620;
-    border: 3px solid #252723;
-    border-radius: 16px;
-  }
-  [data-layout="phones"] .project-preview-primary {
-    width: 36%;
-    top: 6%;
-    left: 18%;
+  [data-layout="angled"] .project-cover-primary {
+    width: 70%;
+    top: 18.5%;
+    left: 7%;
     transform: rotate(-7deg);
   }
-  [data-layout="phones"] .project-preview-secondary {
-    width: 33%;
-    top: 13%;
-    left: 52%;
-    transform: rotate(12deg);
-  }
-  .project-preview[data-layout="inset"] {
-    background: radial-gradient(ellipse at 92% 90%, #8c78bc, #403060 59%, #211a38);
-  }
-  [data-layout="inset"] .project-preview-primary {
-    width: 84%;
-    height: 73%;
-    top: 9%;
-    left: 7%;
-  }
-  [data-layout="inset"] .project-preview-secondary {
-    z-index: 1;
-    width: 48%;
-    height: 36%;
+  [data-layout="angled"] .project-cover-secondary {
+    width: 55%;
+    top: 12%;
     right: 5%;
-    bottom: 6%;
-    border-color: #c9b8e4;
+    transform: rotate(6deg);
   }
-  .project-preview[data-layout="strips"] {
-    background: linear-gradient(150deg, #f4eaf1, #bea8c3);
+  .project-cover[data-layout="phones"] {
+    background:
+      radial-gradient(ellipse at 50% 48%, #faf1d3 0 22%, transparent 64%),
+      linear-gradient(145deg, #dfdec0, #a7b38c);
   }
-  [data-layout="strips"] .project-preview-screen {
-    width: 86%;
-    height: 39%;
+  [data-layout="phones"] .project-cover-screen {
+    aspect-ratio: 860 / 1620;
+    top: 50%;
+    left: 50%;
+    border: 3px solid #252720;
+    border-radius: 18px;
+    box-shadow: 0 18px 30px #34402a40, 0 2px 4px #0004;
+  }
+  [data-layout="phones"] .project-cover-primary {
+    height: min(84%, 76cqw);
+    transform: translate(-105%, -50%) rotate(-7deg);
+  }
+  [data-layout="phones"] .project-cover-secondary {
+    height: min(74%, 67cqw);
+    transform: translate(8%, -45%) rotate(9deg);
+  }
+  .project-cover[data-layout="inset"] {
+    background:
+      radial-gradient(ellipse at 90% 90%, #8064af, transparent 66%),
+      linear-gradient(145deg, #211831, #46365f);
+  }
+  [data-layout="inset"] .project-cover-primary {
+    width: 82%;
+    aspect-ratio: 1160 / 740;
+    top: 15%;
     left: 7%;
-    border-radius: 8px;
-    box-shadow: 0 5px 14px #4b324726;
+    border-color: #a393bd66;
   }
-  [data-layout="strips"] .project-preview-secondary {
-    top: 8%;
+  [data-layout="inset"] .project-cover-secondary {
+    z-index: 1;
+    width: 35%;
+    aspect-ratio: 2.1;
+    right: 4%;
+    top: 4%;
+    border-color: #b2a0ce;
+    box-shadow: 0 10px 25px #0e081e80;
   }
-  [data-layout="strips"] .project-preview-secondary img {
-    object-position: center 36%;
+  [data-layout="inset"] .project-cover-secondary img {
+    object-position: center 25%;
   }
-  [data-layout="strips"] .project-preview-primary {
-    bottom: 8%;
+  .project-cover[data-layout="workspace"] {
+    background:
+      linear-gradient(90deg, transparent 56%, #ffffff3d 56%),
+      linear-gradient(145deg, #efe8f0, #d3bfd0);
   }
-  [data-layout="strips"] .project-preview-primary img {
-    object-position: center 23%;
+  [data-layout="workspace"] .project-cover-primary {
+    width: 55%;
+    aspect-ratio: 1200 / 1010;
+    left: 5%;
+    top: 50%;
+    translate: 0 -50%;
+    box-shadow: 0 14px 28px #63465e30;
   }
-  .project-preview[data-layout="broadcast"] {
-    background: #13141a;
+  [data-layout="workspace"] .project-cover-secondary {
+    width: 34%;
+    aspect-ratio: 840 / 595;
+    right: 4%;
+    top: 50%;
+    translate: 0 -33%;
+    border-radius: 7px;
+    box-shadow: 0 8px 18px #63465e26;
   }
-  [data-layout="broadcast"] .project-preview-screen {
+  .project-cover[data-layout="broadcast"] {
+    background:
+      radial-gradient(ellipse at 95% 5%, #55232b, transparent 58%),
+      #15151e;
+  }
+  [data-layout="broadcast"] .project-cover-composition {
+    width: min(91%, 137cqh);
+  }
+  [data-layout="broadcast"] .project-cover-screen {
     width: 100%;
     left: 0;
     border: 0;
     border-radius: 0;
     box-shadow: none;
+    background: #15151e;
   }
-  [data-layout="broadcast"] .project-preview-secondary {
-    top: 0;
-    height: 36%;
-    border-bottom: 2px solid #df3741;
+  /* Frame the race banner and tyre chart within the dashboard captures. */
+  [data-layout="broadcast"] .project-cover-secondary {
+    top: 7%;
+    aspect-ratio: 896 / 205;
+    border-radius: 5px;
   }
-  [data-layout="broadcast"] .project-preview-secondary img {
-    object-position: center 26%;
+  [data-layout="broadcast"] .project-cover-secondary img {
+    height: auto;
+    transform: translateY(-14.5%);
   }
-  [data-layout="broadcast"] .project-preview-primary {
-    bottom: 0;
-    height: 64%;
+  [data-layout="broadcast"] .project-cover-primary {
+    bottom: 7%;
+    aspect-ratio: 1028 / 405;
   }
-  [data-layout="broadcast"] .project-preview-primary img {
-    object-position: center 81%;
+  [data-layout="broadcast"] .project-cover-primary img {
+    height: auto;
+    transform: translateY(-41%);
   }
   .detail-art figcaption {
-    margin-top: 12px;
-    text-align: center;
-    font-size: 11px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px 24px;
+    margin-top: 16px;
+    color: #625e5c;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .detail-art figcaption a {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+    gap: 6px;
+    color: var(--color-ink);
+  }
+  .detail-art figcaption svg {
+    width: 14px;
+    height: 14px;
   }
   .tone-cyan {
     background: #d6fdff;
@@ -800,8 +842,10 @@
   }
   .detail-art {
     margin: 0 40px 64px;
-    border-radius: 32px;
-    padding: 48px;
+  }
+  .detail-art .project-cover {
+    aspect-ratio: 1.9;
+    border-radius: 24px;
   }
   .detail-content {
     display: grid;
@@ -1129,8 +1173,15 @@
   }
   .detail-art {
     margin-inline: 0;
-    padding: 24px;
     margin-bottom: 40px;
+  }
+  .detail-art .project-cover {
+    aspect-ratio: 1.44;
+    border-radius: 20px;
+  }
+  .detail-art figcaption {
+    flex-direction: column;
+    gap: 8px;
   }
   .detail-copy h2 {
     font-size: 26px;
@@ -1180,6 +1231,11 @@
     top: auto !important;
     transform: none !important;
     animation: none !important;
+  }
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .project-preview:hover .project-cover-composition {
+    scale: 1.025;
   }
 }
 @media (prefers-reduced-motion: reduce) {

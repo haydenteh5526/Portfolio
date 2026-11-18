@@ -6,11 +6,13 @@
   "projects": [
     {
       "slug": "docvault",
+      "stage": "Local MVP",
+      "role": "Final-year project developer",
       "name": "DocVault",
       "category": "Final-year project",
       "tone": "cyan",
       "screenshot": {
-        "layout": "angled",
+        "layout": "review",
         "file": "docvault-screenshot.webp",
         "width": 1200,
         "height": 825,
@@ -43,11 +45,13 @@
     },
     {
       "slug": "vibecam",
+      "stage": "In development",
+      "role": "Developer",
       "name": "VibeCam",
       "category": "Offline mobile experience",
       "tone": "green",
       "screenshot": {
-        "layout": "phones",
+        "layout": "phone",
         "file": "vibecam-screenshot.webp",
         "width": 860,
         "height": 1620,
@@ -73,11 +77,13 @@
     },
     {
       "slug": "exoplanet-ai-hunter",
+      "stage": "Challenge project",
+      "role": "Developer · NASA Space Apps Challenge 2025 participant",
       "name": "Exoplanet AI Hunter",
       "category": "NASA Space Apps Challenge 2025",
       "tone": "lavender",
       "screenshot": {
-        "layout": "inset",
+        "layout": "classifier",
         "file": "exoplanet-screenshot.webp",
         "width": 1160,
         "height": 790,
@@ -103,11 +109,13 @@
     },
     {
       "slug": "coursexcel",
+      "stage": "Source available",
+      "role": "Team Leader · September 2024 – December 2024",
       "name": "CourseXcel",
       "category": "Team Leader · September 2024 – December 2024",
       "tone": "peach",
       "screenshot": {
-        "layout": "workspace",
+        "layout": "dashboard",
         "file": "coursexcel-screenshot.webp",
         "width": 1200,
         "height": 1010,
@@ -133,11 +141,13 @@
     },
     {
       "slug": "f1-strategy-visualisation",
+      "stage": "Prototype",
+      "role": "Head Developer · Group project",
       "name": "F1 Strategy Visualisation",
       "category": "Group data visualisation project",
       "tone": "blue",
       "screenshot": {
-        "layout": "broadcast",
+        "layout": "strategy",
         "file": "f1-screenshot.webp",
         "width": 1028,
         "height": 888,

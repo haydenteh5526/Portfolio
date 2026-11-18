@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useRef, useState, type FormEvent } from "react";
 import { ArrowRight } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -28,6 +28,21 @@ export function ContactForm({
   endpoint?: string;
 }) {
   const [status, setStatus] = useState<keyof typeof messages>("idle");
+  const [copy, setCopy] = useState<"idle" | "copied" | "manual">("idle");
+  const address = useRef<HTMLAnchorElement>(null);
+
+  async function copyEmail() {
+    try {
+      await navigator.clipboard.writeText(email);
+      setCopy("copied");
+    } catch {
+      // Clipboard access can be blocked; select the address for a manual copy.
+      if (address.current)
+        window.getSelection()?.selectAllChildren(address.current);
+      setCopy("manual");
+    }
+    window.setTimeout(() => setCopy("idle"), 4000);
+  }
 
   async function submitMessage(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -77,86 +92,119 @@ export function ContactForm({
   }
 
   return (
-    <form
-      className="contact-form"
-      aria-label="Contact Hayden"
-      aria-describedby={endpoint ? undefined : "contact-form-note"}
-      action={endpoint || `mailto:${email}`}
-      method="post"
-      encType={endpoint ? "multipart/form-data" : "text/plain"}
-      onSubmit={submitMessage}
-      onInput={(event) => {
-        const input = event.target;
-        if (
-          input instanceof HTMLInputElement ||
-          input instanceof HTMLTextAreaElement
-        ) {
-          input.setCustomValidity("");
-        }
-        setStatus("idle");
-      }}
-    >
-      <fieldset disabled={status === "sending"}>
-        {endpoint ? (
-          <input
-            type="text"
-            name="_gotcha"
-            hidden
-            tabIndex={-1}
-            autoComplete="off"
-          />
-        ) : null}
-        <div className="contact-fields">
-          <div className="contact-field">
-            <label htmlFor="contact-name">Your name</label>
-            <Input
-              id="contact-name"
-              name="name"
-              autoComplete="name"
-              placeholder="Enter your name"
-              maxLength={100}
-              required
-              className={`${fieldStyle} h-12`}
+    <>
+      <form
+        className="contact-form"
+        aria-label="Contact Hayden"
+        aria-describedby={endpoint ? undefined : "contact-form-note"}
+        action={endpoint || `mailto:${email}`}
+        method="post"
+        encType={endpoint ? "multipart/form-data" : "text/plain"}
+        onSubmit={submitMessage}
+        onInput={(event) => {
+          const input = event.target;
+          if (
+            input instanceof HTMLInputElement ||
+            input instanceof HTMLTextAreaElement
+          ) {
+            input.setCustomValidity("");
+          }
+          setStatus("idle");
+        }}
+      >
+        <fieldset disabled={status === "sending"}>
+          {endpoint ? (
+            <input
+              type="text"
+              name="_gotcha"
+              hidden
+              tabIndex={-1}
+              autoComplete="off"
             />
+          ) : null}
+          <div className="contact-fields">
+            <div className="contact-field">
+              <label htmlFor="contact-name">Your name</label>
+              <Input
+                id="contact-name"
+                name="name"
+                autoComplete="name"
+                placeholder="Enter your name"
+                maxLength={100}
+                required
+                className={`${fieldStyle} h-12`}
+              />
+            </div>
+            <div className="contact-field">
+              <label htmlFor="contact-email">Email address</label>
+              <Input
+                id="contact-email"
+                name="email"
+                type="email"
+                autoComplete="email"
+                placeholder="you@example.com"
+                maxLength={254}
+                required
+                className={`${fieldStyle} h-12`}
+              />
+            </div>
           </div>
           <div className="contact-field">
-            <label htmlFor="contact-email">Email address</label>
-            <Input
-              id="contact-email"
-              name="email"
-              type="email"
-              autoComplete="email"
-              placeholder="you@example.com"
-              maxLength={254}
+            <label htmlFor="contact-message">Your message</label>
+            <Textarea
+              id="contact-message"
+              name="message"
+              placeholder="Hi Hayden, I’d love to discuss an opportunity with you…"
+              rows={4}
+              maxLength={1500}
               required
-              className={`${fieldStyle} h-12`}
+              className={`${fieldStyle} min-h-32 resize-y py-3`}
             />
           </div>
+        </fieldset>
+        <div className="contact-submit">
+          {endpoint ? null : (
+            <p id="contact-form-note">Opens a draft in your email app.</p>
+          )}
+          <Button
+            type="submit"
+            size="portfolio"
+            disabled={status === "sending"}
+          >
+            {status === "sending"
+              ? "Sending…"
+              : endpoint
+                ? "Send message"
+                : "Open email draft"}{" "}
+            <ArrowRight />
+          </Button>
+          <p className="contact-status" role="status" data-state={status}>
+            {messages[status]}
+          </p>
         </div>
-        <div className="contact-field">
-          <label htmlFor="contact-message">Your message</label>
-          <Textarea
-            id="contact-message"
-            name="message"
-            placeholder="Hi Hayden, I’d love to discuss an opportunity with you…"
-            rows={4}
-            maxLength={1500}
-            required
-            className={`${fieldStyle} min-h-32 resize-y py-3`}
-          />
-        </div>
-      </fieldset>
-      <div className="contact-submit">
-        {endpoint ? null : (
-          <p id="contact-form-note">Opens a draft in your email app.</p>
-        )}
-        <Button type="submit" size="portfolio" disabled={status === "sending"}>
-          {endpoint ? "Send message" : "Open email draft"} <ArrowRight />
+      </form>
+      <div className="contact-direct">
+        <span>Or email me directly:</span>
+        <a ref={address} href={`mailto:${email}`}>
+          {email}
+        </a>
+        <Button
+          type="button"
+          variant="outline"
+          size="sm"
+          className="h-9 rounded-full px-4 shadow-[0_1px_2px_#1e151526]"
+          onClick={copyEmail}
+        >
+          {copy === "copied" ? "Copied" : "Copy email"}
         </Button>
-        <p className="contact-status" role="status" data-state={status}>
-          {messages[status]}
-        </p>
+        <span className="contact-copy-status" role="status">
+          {copy === "copied"
+            ? "Email address copied."
+            : copy === "manual"
+              ? "Address selected. Press Ctrl or ⌘ + C to copy."
+              : ""}
+        </span>
       </div>
-    </form>
+    </>
   );
 }

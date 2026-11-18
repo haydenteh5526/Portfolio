@@ -84,7 +84,7 @@ export function Header() {
         </Link>
         <Button
           ref={button}
-          className="menu-toggle hidden max-[760px]:inline-flex"
+          className="menu-toggle hidden size-11 max-[760px]:inline-flex"
           variant="ghost"
           size="icon-lg"
           type="button"

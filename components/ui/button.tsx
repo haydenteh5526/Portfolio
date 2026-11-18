@@ -22,7 +22,7 @@ const buttonVariants = cva(
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",
         portfolio:
-          "h-12 gap-3 rounded-full px-5 py-3 text-base leading-6 font-normal tracking-[-0.16px] shadow-[0_2px_3px_#1e15151a] transition-[background-color,transform,box-shadow] hover:-translate-y-0.5 hover:shadow-[0_4px_8px_#1e15151a]",
+          "h-12 gap-3 rounded-full px-5 py-3 text-base leading-6 font-normal tracking-[-0.16px] shadow-[0_2px_3px_#1e15151a] transition-[background-color,transform,box-shadow] hover:-translate-y-0.5 hover:shadow-[0_4px_8px_#1e15151a] active:translate-y-0 active:shadow-[0_1px_2px_#1e15151a]",
         xs: "h-6 gap-1 rounded-md px-2 text-xs has-[>svg]:px-1.5 [&_svg:not([class*='size-'])]:size-3",
         sm: "h-8 gap-1.5 rounded-md px-3 has-[>svg]:px-2.5",
         lg: "h-10 rounded-md px-6 has-[>svg]:px-4",

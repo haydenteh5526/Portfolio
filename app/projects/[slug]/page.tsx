@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowUpRight } from "@/components/icons";
 import { ProjectCover } from "@/components/project-cover";
+import { ScreenshotViewer } from "@/components/screenshot-viewer";
 import { asset, portfolio } from "@/lib/site";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -27,20 +28,31 @@ export default async function ProjectPage({ params }: Props) {
   if (!project) notFound();
   const next = portfolio.projects[(index + 1) % portfolio.projects.length];
   const sections = [
-    ["The project", project.purpose],
-    ["Technical approach", project.approach],
-    ["Design decisions", project.decision],
-    ["Evidence", project.evidenceText],
-    ["Current status", project.limitations],
+    ["project", "The project", project.purpose],
+    ["approach", "Technical approach", project.approach],
+    ["decision", "Design decisions", project.decision],
+    ["evidence", "Evidence", project.evidenceText],
+    ["status", "Current status", project.limitations],
   ];
+  const { screenshot } = project;
+  const shots = [screenshot, screenshot.secondary].map((shot) => ({
+    src: asset(`projects/${shot.file}`),
+    width: shot.width,
+    height: shot.height,
+    alt: shot.alt,
+  }));
   return (
     <main id="main" className="wrap detail-main">
       <Link className="text-sm" href="/#projects">
         ← All projects
       </Link>
       <header className="detail-head">
-        <p className="mb-5 text-[13px] font-medium uppercase tracking-[1.5px]">
-          {project.category}
+        <p className="detail-eyebrow">
+          <span>{project.category}</span>
+          <span className="project-stage">
+            <span className="sr-only">Status: </span>
+            {project.stage}
+          </span>
         </p>
         <h1>{project.name}</h1>
         <p className="lead">{project.summary}</p>
@@ -64,30 +76,45 @@ export default async function ProjectPage({ params }: Props) {
           </a>
         </div>
       </header>
-      <figure className="detail-art">
-        <ProjectCover screenshot={project.screenshot} featured />
-        <figcaption>
-          <span>{project.screenshot.caption}</span>
-          <a
-            className="text-link"
-            href={asset(`projects/${project.screenshot.file}`)}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View full screenshot <ArrowUpRight />
-          </a>
-        </figcaption>
-      </figure>
+      <ScreenshotViewer
+        shots={shots}
+        caption={`Simplified illustration of ${project.name}. The screenshots show the current build.`}
+      >
+        <ProjectCover screenshot={screenshot} />
+      </ScreenshotViewer>
       <div className="detail-content">
         <div className="detail-copy">
-          {sections.map(([title, text]) => (
-            <section key={title}>
-              <h2>{title}</h2>
+          {sections.map(([id, title, text]) => (
+            <section
+              key={id}
+              id={id}
+              className={`detail-${id}`}
+              aria-labelledby={`${id}-heading`}
+            >
+              <h2 id={`${id}-heading`}>{title}</h2>
+              {id === "status" ? (
+                <p className="detail-status-line">
+                  <span className="project-stage">{project.stage}</span>
+                  {project.status}
+                </p>
+              ) : null}
               <p>{text}</p>
+              {id === "evidence" ? (
+                <a
+                  className="text-link detail-evidence-link"
+                  href={project.evidence}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Open the project evidence <ArrowUpRight />
+                </a>
+              ) : null}
             </section>
           ))}
         </div>
         <aside className="detail-sidebar" aria-label="Project summary">
+          <h2>My role</h2>
+          <p>{project.role}</p>
           <h2>Status</h2>
           <p>{project.status}</p>
           <h2>Technologies</h2>
@@ -102,6 +129,14 @@ export default async function ProjectPage({ params }: Props) {
               </Badge>
             ))}
           </div>
+          <h2>On this page</h2>
+          <ul className="detail-jump">
+            {sections.map(([id, title]) => (
+              <li key={id}>
+                <a href={`#${id}`}>{title}</a>
+              </li>
+            ))}
+          </ul>
           <a
             href={project.repository}
             target="_blank"

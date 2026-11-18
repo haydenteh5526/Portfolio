@@ -14,13 +14,8 @@ export const contact = {
   cv: "https://www.canva.com/d/fpEcfoZPNM7Fcmt",
 };
 
-// Public paths are relative to public/. Leave optional media empty until ready.
-export const media: {
-  portrait: string;
-  video: string;
-  poster: string;
-  captions: string;
-} = { portrait: "hayden-teh.jpg", video: "", poster: "", captions: "" };
+// Public paths are relative to public/.
+export const media = { portrait: "hayden-teh.jpg" };
 
 export const skills = [
   {

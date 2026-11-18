@@ -9,9 +9,6 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
 export default function Home() {
-  const videoUrl = /^https:\/\//.test(media.video)
-    ? media.video
-    : asset(media.video);
   return (
     <main id="main" className="wrap">
       <section className="hero" aria-labelledby="intro-title">
@@ -242,38 +239,6 @@ export default function Home() {
         </Reveal>
       </section>
 
-      {media.video ? (
-        <section id="pitch" className="section" aria-labelledby="pitch-heading">
-          <h2 id="pitch-heading" className="section-title">
-            My Elevator Pitch
-          </h2>
-          {/\.mp4(?:[?#].*)?$/i.test(media.video) ? (
-            <video
-              className="w-full rounded-3xl"
-              controls
-              preload="metadata"
-              poster={media.poster ? asset(media.poster) : undefined}
-              aria-label="Hayden Teh elevator pitch"
-            >
-              <source src={videoUrl} type="video/mp4" />
-              {media.captions ? (
-                <track
-                  kind="captions"
-                  src={asset(media.captions)}
-                  srcLang="en"
-                  label="English"
-                  default
-                />
-              ) : null}
-            </video>
-          ) : null}
-          <Button asChild size="portfolio" className="mt-5">
-            <a href={videoUrl} target="_blank" rel="noopener noreferrer">
-              Watch my elevator pitch <ArrowUpRight />
-            </a>
-          </Button>
-        </section>
-      ) : null}
     </main>
   );
 }

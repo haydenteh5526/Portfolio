@@ -34,7 +34,9 @@ export function ProjectCard({ project }: { project: Project }) {
         >
           <ProjectCover screenshot={screenshot} />
         </Link>
-        <figcaption className="sr-only">{screenshot.caption}</figcaption>
+        <figcaption className="sr-only">
+          Simplified illustration of {project.name}.
+        </figcaption>
       </figure>
     </article>
   );

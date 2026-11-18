@@ -102,10 +102,14 @@ function StackItem({
           const headerHeight =
             document.querySelector<HTMLElement>(".site-header")?.offsetHeight ??
             0;
+          // Scroll to where this card pins, so the next card cannot overlap it.
+          const pinTop = parseFloat(style.top);
           window.scrollTo({
             top:
               Number(event.currentTarget.dataset.scrollTop) -
-              Math.max(120, headerHeight + 12),
+              (Number.isFinite(pinTop)
+                ? pinTop
+                : Math.max(120, headerHeight + 12)),
             behavior: "instant",
           });
         }
